@@ -22,12 +22,13 @@ function App() {
                         if (newBoard[rowNumber][cellNumber].token !== null)
                           return;
 
-                        event.target.classList.add(
+                        event.currentTarget.classList.add(
                           window.players[turnNumber % 3]
                         );
                         newBoard[rowNumber][cellNumber].token =
                           window.players[turnNumber % 3];
                         setBoard(newBoard);
+                        // const winner = checkWinningConditions(newboard);
 
                         setTurnNumber(turnNumber + 1);
                       }}
