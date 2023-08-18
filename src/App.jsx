@@ -73,7 +73,7 @@ function checkWinningConditions(board, token, position) {
 
   if (checkHorizontals(board, token, position)) return true;
   if (checkVerticals(board, token, position)) return true;
-  // if (checkDiagonals(board, token, position)) return true;
+  if (checkDiagonals(board, token, position)) return true;
 
   return false;
 }
@@ -88,10 +88,10 @@ function checkHorizontals(board, token, position) {
 
     /*eslint for-direction: "off"*/
     for (let i = position.cellNumber + j; i >= position.cellNumber - 5; i--) {
-      console.log(`Checking (${position.rowNumber}, ${i}) (j == ${j})`);
+      // console.log(`Checking (${position.rowNumber}, ${i}) (j == ${j})`);
 
       if (token === board[position.rowNumber][i]?.token) {
-        console.log(`Found token at (${position.rowNumber}, ${i})`);
+        // console.log(`Found token at (${position.rowNumber}, ${i})`);
         countInARow++;
         if (countInARow === 5) {
           sequence = true;
@@ -112,7 +112,30 @@ function checkHorizontals(board, token, position) {
   return sequence;
 }
 
-function checkVerticals(board, token, position) {}
+function checkVerticals(board, token, position) {
+  let tokensInARow = 0;
+
+  for (let startingRow = 0; startingRow < 6; startingRow++) {
+    tokensInARow = 0;
+
+    for (let n = startingRow; n < startingRow + 5; n++) {
+      const cell = board[n][position.cellNumber];
+
+      if (cell.token !== token) {
+        break;
+      }
+
+      tokensInARow = tokensInARow + 1;
+      if (tokensInARow === 5) return true;
+    }
+  }
+
+  return false;
+}
+
+function checkDiagonals(board, token, position) {
+  return false;
+}
 
 // function checkDiagonals(board, token, position) {}
 
