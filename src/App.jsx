@@ -134,7 +134,30 @@ function checkVerticals(board, token, position) {
 }
 
 function checkDiagonals(board, token, position) {
-  return false;
+  let sequence = false;
+  let countInARow = 0;
+
+  // check diagonals
+  if (position.rowNumber === 0 && position.cellNumber >= 4) {
+    console.log("0");
+
+    for (let i = 0; i <= 4; i++) {
+      const cell = board[i][position.cellNumber - i];
+
+      if (cell.token === token) {
+        countInARow = countInARow + 1;
+      }
+
+      if (countInARow === 5) {
+        sequence = true;
+      }
+      console.log("Cell: ", cell);
+    }
+  } else {
+    console.log("Run some other code...");
+  }
+
+  return sequence;
 }
 
 // function checkDiagonals(board, token, position) {}
