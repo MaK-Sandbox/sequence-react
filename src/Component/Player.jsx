@@ -5,10 +5,11 @@ function Player(props) {
   const { name, token, startedCurrentRound } = props;
   return (
     <div className="Player">
-      <span className="Beginner">{startedCurrentRound ? "🔰 - " : null}</span>
-      <span>{name}</span>
-      {" - "}
-      <span className="Token">{token}</span>
+      <span className="Player_beginner_status">
+        {startedCurrentRound ? "🔰" : null}
+      </span>
+      <span className="Player_name">{name}</span>
+      <span className="Player_token">{token}</span>
     </div>
   );
 }
