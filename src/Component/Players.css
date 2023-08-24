@@ -1,0 +1,8 @@
+.Player {
+  height: 2em;
+  width: 8em;
+}
+
+.Player:not(:first-of-type) {
+  margin-top: 1em;
+}
