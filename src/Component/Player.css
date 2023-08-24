@@ -10,3 +10,8 @@
 .Player_beginner_status {
   min-width: 1em;
 }
+
+.Active {
+  border: 0.15em solid green;
+  border-radius: 0.25em;
+}

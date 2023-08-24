@@ -4,9 +4,24 @@ import "./Players.css";
 
 function Players() {
   const [players, setPlayers] = useState([
-    { name: "Sam", token: window.players[0], startedCurrentRound: false },
-    { name: "Eva", token: window.players[1], startedCurrentRound: false },
-    { name: "Niels", token: window.players[2], startedCurrentRound: true },
+    {
+      name: "Sam",
+      token: window.players[0],
+      startedCurrentRound: false,
+      isActivePlayer: true,
+    },
+    {
+      name: "Eva",
+      token: window.players[1],
+      startedCurrentRound: false,
+      isActivePlayer: false,
+    },
+    {
+      name: "Niels",
+      token: window.players[2],
+      startedCurrentRound: true,
+      isActivePlayer: false,
+    },
   ]);
 
   return (
@@ -20,6 +35,7 @@ function Players() {
                 name={player.name}
                 token={player.token}
                 startedCurrentRound={player.startedCurrentRound}
+                isActivePlayer={player.isActivePlayer}
               />
             );
           })
