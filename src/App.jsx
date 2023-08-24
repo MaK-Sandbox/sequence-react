@@ -25,13 +25,13 @@ function App() {
                         // copy board
                         const newBoard = [...board];
                         // get current player
-                        const playerToken = window.players[0];
+                        const playerToken = window.players[turnNumber % 3];
 
                         event.currentTarget.classList.add(playerToken);
 
                         newBoard[rowNumber][cellNumber].token = playerToken;
 
-                        // console.log(`(${rowNumber}, ${cellNumber})`);
+                        console.log(`(${rowNumber}, ${cellNumber})`);
                         setBoard(newBoard);
 
                         const winner = checkWinningConditions(
@@ -86,8 +86,7 @@ function checkHorizontals(board, token, position) {
     let countInARow = 0;
     let breakOut = false;
 
-    /*eslint for-direction: "off"*/
-    for (let i = position.cellNumber + j; i >= position.cellNumber - 5; i--) {
+    for (let i = position.cellNumber - j; i < position.cellNumber + 5; i++) {
       // console.log(`Checking (${position.rowNumber}, ${i}) (j == ${j})`);
 
       if (token === board[position.rowNumber][i]?.token) {
@@ -101,7 +100,7 @@ function checkHorizontals(board, token, position) {
 
       if (token !== board[position.rowNumber][i]?.token) {
         sequence = false;
-        if (i > position.cellNumber) breakOut = true;
+        if (i < position.cellNumber) breakOut = true;
         break;
       }
     }
@@ -135,31 +134,74 @@ function checkVerticals(board, token, position) {
 
 function checkDiagonals(board, token, position) {
   let sequence = false;
-  let countInARow = 0;
 
-  // check diagonals
-  if (position.rowNumber === 0 && position.cellNumber >= 4) {
-    console.log("0");
+  //  checking \ diagonal
+  for (let j = 0; j < 5; j++) {
+    let tokensInARow = 0;
+    let breakOut = false;
 
-    for (let i = 0; i <= 4; i++) {
-      const cell = board[i][position.cellNumber - i];
+    for (let i = 0; i < 5; i++) {
+      const checkRow = position.rowNumber + i - j;
+      const checkCell = position.cellNumber + i - j;
+      // console.log(`Checking : (${checkRow},${checkCell})`);
 
-      if (cell.token === token) {
-        countInARow = countInARow + 1;
+      if (token === board?.[checkRow]?.[checkCell]?.token) {
+        // console.log(`Found token at: (${checkRow},${checkCell})0`);
+        tokensInARow++;
+
+        if (tokensInARow === 5) {
+          sequence = true;
+          // console.log(`Sequence! ${sequence}`);
+          break;
+        }
+      } else {
+        sequence = false;
+
+        if (checkRow < position.rowNumber && checkCell < position.cellNumber) {
+          breakOut = true;
+        }
+        break;
       }
-
-      if (countInARow === 5) {
-        sequence = true;
-      }
-      console.log("Cell: ", cell);
     }
-  } else {
-    console.log("Run some other code...");
+    if (breakOut) break;
+    if (sequence) break;
+  }
+
+  if (sequence) return sequence;
+
+  //  checking / diagonal
+  for (let j = 0; j < 5; j++) {
+    let tokensInARow = 0;
+    let breakOut = false;
+
+    for (let i = 0; i < 5; i++) {
+      const checkRow = position.rowNumber + i - j;
+      const checkCell = position.cellNumber - i + j;
+      console.log(`Checking : (${checkRow},${checkCell})`);
+
+      if (token === board?.[checkRow]?.[checkCell]?.token) {
+        console.log(`Found token at: (${checkRow},${checkCell})`);
+        tokensInARow++;
+
+        if (tokensInARow === 5) {
+          sequence = true;
+          console.log(`Sequence! ${sequence}`);
+          break;
+        }
+      } else {
+        sequence = false;
+
+        if (checkRow < position.rowNumber && checkCell > position.cellNumber) {
+          breakOut = true;
+        }
+        break;
+      }
+    }
+    if (breakOut) break;
+    if (sequence) break;
   }
 
   return sequence;
 }
-
-// function checkDiagonals(board, token, position) {}
 
 export default App;
