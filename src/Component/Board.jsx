@@ -53,8 +53,13 @@ function Board(props) {
                           copyTeams[foundIndex].sequenceCount =
                             copyTeams[foundIndex].sequenceCount + 1;
 
+                          // in case the current team has accomplished 2 sequences, the game is over and should stop
+                          if (copyTeams[foundIndex].sequenceCount === 2) {
+                            alert(`${playerToken} won!`);
+                            setTeams(copyTeams);
+                            return;
+                          }
                           setTeams(copyTeams);
-                          // alert(`${playerToken} won!`);
                         }
 
                         setTurnNumber(turnNumber + 1);
