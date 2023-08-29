@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Player from "./Player";
 import "./Players.css";
+import PropTypes from "prop-types";
 
 function Players({ turnNumber }) {
   const [players, setPlayers] = useState([
@@ -61,5 +62,9 @@ function Players({ turnNumber }) {
     </div>
   );
 }
+
+Players.propTypes = {
+  turnNumber: PropTypes.number,
+};
 
 export default Players;
