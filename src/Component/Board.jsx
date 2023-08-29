@@ -45,15 +45,15 @@ function Board(props) {
                         );
 
                         if (winner) {
-                          const copyPlayers = [...teams];
+                          const copyTeams = [...teams];
 
                           const foundIndex = teams.findIndex(
                             (player) => player.token === playerToken
                           );
-                          copyPlayers[foundIndex].sequenceCount =
-                            copyPlayers[foundIndex].sequenceCount + 1;
+                          copyTeams[foundIndex].sequenceCount =
+                            copyTeams[foundIndex].sequenceCount + 1;
 
-                          setTeams(copyPlayers);
+                          setTeams(copyTeams);
                           // alert(`${playerToken} won!`);
                         }
 
