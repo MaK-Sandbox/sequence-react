@@ -18,6 +18,8 @@ function Board(props) {
                   return (
                     <td
                       className="cell"
+                      data-row={rowNumber}
+                      data-cell={cellNumber}
                       key={cellNumber}
                       onClick={(event) => {
                         // if the cell is already taken, nothing happens
@@ -85,16 +87,14 @@ function checkHorizontals(board, token, position) {
 
   // check horizontals
   for (let j = 0; j <= 5; j++) {
-    let countInARow = 0;
+    let countInARow = [];
     let breakOut = false;
 
     for (let i = position.cellNumber - j; i < position.cellNumber + 5; i++) {
-      // console.log(`Checking (${position.rowNumber}, ${i}) (j == ${j})`);
-
       if (token === board[position.rowNumber][i]?.token) {
-        // console.log(`Found token at (${position.rowNumber}, ${i})`);
-        countInARow++;
-        if (countInARow === 5) {
+        countInARow.push({ row: position.rowNumber, cell: i });
+        if (countInARow.length === 5) {
+          console.log("countInARow: ", countInARow);
           sequence = true;
           break;
         }
@@ -114,10 +114,10 @@ function checkHorizontals(board, token, position) {
 }
 
 function checkVerticals(board, token, position) {
-  let tokensInARow = 0;
+  let tokensInARow = [];
 
   for (let startingRow = 0; startingRow < 6; startingRow++) {
-    tokensInARow = 0;
+    tokensInARow = [];
 
     for (let n = startingRow; n < startingRow + 5; n++) {
       const cell = board[n][position.cellNumber];
@@ -126,8 +126,11 @@ function checkVerticals(board, token, position) {
         break;
       }
 
-      tokensInARow = tokensInARow + 1;
-      if (tokensInARow === 5) return true;
+      tokensInARow.push({ row: n, cell: position.cellNumber });
+      if (tokensInARow.length === 5) {
+        console.log("tokensInARokw: ", tokensInARow);
+        return true;
+      }
     }
   }
 
@@ -139,21 +142,19 @@ function checkDiagonals(board, token, position) {
 
   //  checking \ diagonal
   for (let j = 0; j < 5; j++) {
-    let tokensInARow = 0;
+    let tokensInARow = [];
     let breakOut = false;
 
     for (let i = 0; i < 5; i++) {
       const checkRow = position.rowNumber + i - j;
       const checkCell = position.cellNumber + i - j;
-      // console.log(`Checking : (${checkRow},${checkCell})`);
 
       if (token === board?.[checkRow]?.[checkCell]?.token) {
-        // console.log(`Found token at: (${checkRow},${checkCell})0`);
-        tokensInARow++;
+        tokensInARow.push({ row: checkRow, cell: checkCell });
 
-        if (tokensInARow === 5) {
+        if (tokensInARow.length === 5) {
+          console.log("tokensInARokw: ", tokensInARow);
           sequence = true;
-          // console.log(`Sequence! ${sequence}`);
           break;
         }
       } else {
@@ -165,6 +166,8 @@ function checkDiagonals(board, token, position) {
         break;
       }
     }
+
+    // console.log("tokensInARow, ", tokensInARow);
     if (breakOut) break;
     if (sequence) break;
   }
@@ -173,21 +176,19 @@ function checkDiagonals(board, token, position) {
 
   //  checking / diagonal
   for (let j = 0; j < 5; j++) {
-    let tokensInARow = 0;
+    let tokensInARow = [];
     let breakOut = false;
 
     for (let i = 0; i < 5; i++) {
       const checkRow = position.rowNumber + i - j;
       const checkCell = position.cellNumber - i + j;
-      console.log(`Checking : (${checkRow},${checkCell})`);
 
       if (token === board?.[checkRow]?.[checkCell]?.token) {
-        console.log(`Found token at: (${checkRow},${checkCell})`);
-        tokensInARow++;
+        tokensInARow.push({ row: checkRow, cell: checkCell });
 
-        if (tokensInARow === 5) {
+        if (tokensInARow.length === 5) {
+          console.log("tokensInARokw: ", tokensInARow);
           sequence = true;
-          console.log(`Sequence! ${sequence}`);
           break;
         }
       } else {
