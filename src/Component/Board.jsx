@@ -1,9 +1,8 @@
 import { useState } from "react";
 import "./Board.css";
 
-function Board() {
+function Board({ turnNumber, setTurnNumber }) {
   const [board, setBoard] = useState(window.board);
-  const [turnNumber, setTurnNumber] = useState(0);
 
   return (
     <div className="board">

@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Player from "./Player";
 import "./Players.css";
 
-function Players() {
+function Players({ turnNumber }) {
   const [players, setPlayers] = useState([
     {
       name: "Sam",
@@ -23,6 +23,24 @@ function Players() {
       isActivePlayer: false,
     },
   ]);
+
+  useEffect(() => {
+    // create a copy of the players array so we can modify it
+    const playersCopy = [...players];
+    const currentPlayer = turnNumber % 3;
+
+    console.log("turnNumber: ", currentPlayer);
+
+    if (currentPlayer === 0) {
+      playersCopy[currentPlayer + 2].isActivePlayer = false;
+      playersCopy[currentPlayer].isActivePlayer = true;
+    } else {
+      playersCopy[currentPlayer - 1].isActivePlayer = false;
+      playersCopy[currentPlayer].isActivePlayer = true;
+    }
+
+    setPlayers(playersCopy);
+  }, [turnNumber]);
 
   return (
     <div className="Players">
