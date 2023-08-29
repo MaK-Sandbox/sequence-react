@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 function Board(props) {
   const [board, setBoard] = useState(window.board);
 
-  const { turnNumber, setTurnNumber } = props;
+  const { teams, setTeams, turnNumber, setTurnNumber } = props;
 
   return (
     <div className="board">
@@ -29,13 +29,13 @@ function Board(props) {
                         // copy board
                         const newBoard = [...board];
                         // get current player
-                        const playerToken = window.players[turnNumber % 3];
+                        const playerToken = window.tokens[turnNumber % 3];
 
                         event.currentTarget.classList.add(playerToken);
 
                         newBoard[rowNumber][cellNumber].token = playerToken;
 
-                        console.log(`(${rowNumber}, ${cellNumber})`);
+                        // console.log(`(${rowNumber}, ${cellNumber})`);
                         setBoard(newBoard);
 
                         const winner = checkWinningConditions(
@@ -45,7 +45,16 @@ function Board(props) {
                         );
 
                         if (winner) {
-                          alert(`${playerToken} won!`);
+                          const copyPlayers = [...teams];
+
+                          const foundIndex = teams.findIndex(
+                            (player) => player.token === playerToken
+                          );
+                          copyPlayers[foundIndex].sequenceCount =
+                            copyPlayers[foundIndex].sequenceCount + 1;
+
+                          setTeams(copyPlayers);
+                          // alert(`${playerToken} won!`);
                         }
 
                         setTurnNumber(turnNumber + 1);
@@ -68,7 +77,7 @@ function Board(props) {
 }
 
 function checkWinningConditions(board, token, position) {
-  console.log("====================================================");
+  // console.log("====================================================");
   // put the current player's token into corners
   board[0][0].token = token;
   board[0][9].token = token;
@@ -94,7 +103,7 @@ function checkHorizontals(board, token, position) {
       if (token === board[position.rowNumber][i]?.token) {
         countInARow.push({ row: position.rowNumber, cell: i });
         if (countInARow.length === 5) {
-          console.log("countInARow: ", countInARow);
+          // console.log("countInARow: ", countInARow);
           sequence = true;
           break;
         }
@@ -128,7 +137,7 @@ function checkVerticals(board, token, position) {
 
       tokensInARow.push({ row: n, cell: position.cellNumber });
       if (tokensInARow.length === 5) {
-        console.log("tokensInARokw: ", tokensInARow);
+        // console.log("tokensInARokw: ", tokensInARow);
         return true;
       }
     }
@@ -153,7 +162,7 @@ function checkDiagonals(board, token, position) {
         tokensInARow.push({ row: checkRow, cell: checkCell });
 
         if (tokensInARow.length === 5) {
-          console.log("tokensInARokw: ", tokensInARow);
+          // console.log("tokensInARokw: ", tokensInARow);
           sequence = true;
           break;
         }
@@ -187,7 +196,7 @@ function checkDiagonals(board, token, position) {
         tokensInARow.push({ row: checkRow, cell: checkCell });
 
         if (tokensInARow.length === 5) {
-          console.log("tokensInARokw: ", tokensInARow);
+          // console.log("tokensInARokw: ", tokensInARow);
           sequence = true;
           break;
         }
@@ -208,6 +217,20 @@ function checkDiagonals(board, token, position) {
 }
 
 Board.propTypes = {
+  teams: PropTypes.arrayOf(
+    PropTypes.shape({
+      members: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string,
+        })
+      ),
+      token: PropTypes.string,
+      startedCurrentRound: PropTypes.bool,
+      isActivePlayer: PropTypes.bool,
+      sequenceCount: PropTypes.number,
+    })
+  ),
+  setTeams: PropTypes.func,
   turnNumber: PropTypes.number,
   setTurnNumber: PropTypes.func,
 };

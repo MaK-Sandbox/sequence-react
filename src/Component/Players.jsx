@@ -1,33 +1,14 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Player from "./Player";
 import "./Players.css";
 import PropTypes from "prop-types";
 
-function Players({ turnNumber }) {
-  const [players, setPlayers] = useState([
-    {
-      name: "Sam",
-      token: window.players[0],
-      startedCurrentRound: false,
-      isActivePlayer: true,
-    },
-    {
-      name: "Eva",
-      token: window.players[1],
-      startedCurrentRound: false,
-      isActivePlayer: false,
-    },
-    {
-      name: "Niels",
-      token: window.players[2],
-      startedCurrentRound: true,
-      isActivePlayer: false,
-    },
-  ]);
+function Players(props) {
+  const { teams, setTeams, turnNumber } = props;
 
   useEffect(() => {
     // create a copy of the players array so we can modify it
-    const playersCopy = [...players];
+    const playersCopy = [...teams];
     const currentPlayer = turnNumber % 3;
 
     console.log("turnNumber: ", currentPlayer);
@@ -40,18 +21,18 @@ function Players({ turnNumber }) {
       playersCopy[currentPlayer].isActivePlayer = true;
     }
 
-    setPlayers(playersCopy);
+    setTeams(playersCopy);
   }, [turnNumber]);
 
   return (
     <div className="Players">
       <h2>Players</h2>
-      {players.length > 0
-        ? players.map((player, index) => {
+      {teams.length > 0
+        ? teams.map((player, index) => {
             return (
               <Player
                 key={index}
-                name={player.name}
+                name={player.members[0].name}
                 token={player.token}
                 startedCurrentRound={player.startedCurrentRound}
                 isActivePlayer={player.isActivePlayer}
@@ -64,6 +45,20 @@ function Players({ turnNumber }) {
 }
 
 Players.propTypes = {
+  teams: PropTypes.arrayOf(
+    PropTypes.shape({
+      members: PropTypes.arrayOf(
+        PropTypes.shape({
+          name: PropTypes.string,
+        })
+      ),
+      token: PropTypes.string,
+      startedCurrentRound: PropTypes.bool,
+      isActivePlayer: PropTypes.bool,
+      sequenceCount: PropTypes.number,
+    })
+  ),
+  setTeams: PropTypes.func,
   turnNumber: PropTypes.number,
 };
 

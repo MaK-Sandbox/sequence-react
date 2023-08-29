@@ -18,7 +18,7 @@ window.boardLayout = [
 
 window.board = createBoard(window.boardLayout);
 
-window.players = ["🔵", "🔴", "🟢"];
+window.tokens = ["🔵", "🔴", "🟢"];
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
