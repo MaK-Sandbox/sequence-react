@@ -1,8 +1,11 @@
 import { useState } from "react";
 import "./Board.css";
+import PropTypes from "prop-types";
 
-function Board({ turnNumber, setTurnNumber }) {
+function Board(props) {
   const [board, setBoard] = useState(window.board);
+
+  const { turnNumber, setTurnNumber } = props;
 
   return (
     <div className="board">
@@ -202,5 +205,10 @@ function checkDiagonals(board, token, position) {
 
   return sequence;
 }
+
+Board.propTypes = {
+  turnNumber: PropTypes.number,
+  setTurnNumber: PropTypes.func,
+};
 
 export default Board;
