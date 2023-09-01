@@ -42,30 +42,39 @@ window.players = [
     startedCurrentRound: true,
     isActivePlayer: true,
     isYou: true,
+    cards: [],
   },
   {
     name: "Eva",
     token: "🔴",
     startedCurrentRound: false,
     isActivePlayer: false,
+    isYou: false,
+    cards: [],
   },
   {
     name: "Niels",
     token: "🟢",
     startedCurrentRound: false,
     isActivePlayer: false,
+    isYou: false,
+    cards: [],
   },
   {
     name: "Lisa",
     token: "🔵",
     startedCurrentRound: false,
     isActivePlayer: false,
+    isYou: false,
+    cards: [],
   },
   {
     name: "Joel",
     token: "🔴",
     startedCurrentRound: false,
     isActivePlayer: false,
+    isYou: false,
+    cards: [],
   },
 
   {
@@ -73,18 +82,24 @@ window.players = [
     token: "🟢",
     startedCurrentRound: false,
     isActivePlayer: false,
+    isYou: false,
+    cards: [],
   },
   {
     name: "Lisa",
     token: "🔵",
     startedCurrentRound: false,
     isActivePlayer: false,
+    isYou: false,
+    cards: [],
   },
   {
     name: "Joel",
     token: "🔴",
     startedCurrentRound: false,
     isActivePlayer: false,
+    isYou: false,
+    cards: [],
   },
 
   {
@@ -92,8 +107,18 @@ window.players = [
     token: "🟢",
     startedCurrentRound: false,
     isActivePlayer: false,
+    isYou: false,
+    cards: [],
   },
 ];
+
+for (const player of window.players) {
+  player.cards = dealCards(5);
+}
+
+function dealCards(cardsPerPlayer) {
+  return window.cards.splice(0, cardsPerPlayer);
+}
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

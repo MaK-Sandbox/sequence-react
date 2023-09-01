@@ -3,6 +3,7 @@ import Players from "./Component/Players";
 import Board from "./Component/Board";
 import Cards from "./Component/Cards";
 import "./App.css";
+import Hand from "./Component/Hand";
 
 function App() {
   const [turnNumber, setTurnNumber] = useState(0);
@@ -13,6 +14,7 @@ function App() {
 
   useEffect(() => {
     console.log("Teams: ", teams);
+    console.log("Players:", players.find((p) => p.isYou).cards);
   }, [teams]);
 
   return (
@@ -27,6 +29,7 @@ function App() {
         setPlayers={setPlayers}
       />
       <Cards drawCard={drawCard} />
+      <Hand cards={players.find((p) => p.isYou).cards} />
     </div>
   );
 
