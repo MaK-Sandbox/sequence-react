@@ -41,6 +41,7 @@ window.players = [
     token: "🔵",
     startedCurrentRound: true,
     isActivePlayer: true,
+    isYou: true,
   },
   {
     name: "Eva",

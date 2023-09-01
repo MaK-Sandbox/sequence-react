@@ -26,9 +26,17 @@ function App() {
         players={players}
         setPlayers={setPlayers}
       />
-      <Cards />
+      <Cards drawCard={drawCard} />
     </div>
   );
+
+  function drawCard() {
+    const pile = [...drawPile];
+    const card = pile.pop();
+
+    setDrawPile(pile);
+    return card;
+  }
 }
 
 export default App;
