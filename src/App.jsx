@@ -6,41 +6,10 @@ import "./App.css";
 
 function App() {
   const [turnNumber, setTurnNumber] = useState(0);
-  const [teams, setTeams] = useState([
-    {
-      members: [
-        {
-          name: "Sam",
-        },
-      ],
-      token: window.tokens[0],
-      startedCurrentRound: false,
-      isActivePlayer: true,
-      sequenceCount: 0,
-    },
-    {
-      members: [
-        {
-          name: "Eva",
-        },
-      ],
-      token: window.tokens[1],
-      startedCurrentRound: false,
-      isActivePlayer: false,
-      sequenceCount: 0,
-    },
-    {
-      members: [
-        {
-          name: "Niels",
-        },
-      ],
-      token: window.tokens[2],
-      startedCurrentRound: true,
-      isActivePlayer: false,
-      sequenceCount: 0,
-    },
-  ]);
+  const [teams, setTeams] = useState(window.teams);
+  const [players, setPlayers] = useState([...window.players]);
+  const [drawPile, setDrawPile] = useState([...window.cards]);
+  const [discardPile, setDiscardPile] = useState([]);
 
   useEffect(() => {
     console.log("Teams: ", teams);
@@ -48,12 +17,14 @@ function App() {
 
   return (
     <div className="game-view">
-      <Players teams={teams} setTeams={setTeams} turnNumber={turnNumber} />
+      <Players players={players} />
       <Board
         teams={teams}
         setTeams={setTeams}
         turnNumber={turnNumber}
         setTurnNumber={setTurnNumber}
+        players={players}
+        setPlayers={setPlayers}
       />
       <Cards />
     </div>

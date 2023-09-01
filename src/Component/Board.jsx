@@ -1,11 +1,15 @@
 import { useState } from "react";
 import "./Board.css";
-import PropTypes from "prop-types";
 
-function Board(props) {
+function Board({
+  teams,
+  setTeams,
+  turnNumber,
+  setTurnNumber,
+  players,
+  setPlayers,
+}) {
   const [board, setBoard] = useState(window.board);
-
-  const { teams, setTeams, turnNumber, setTurnNumber } = props;
 
   return (
     <div className="board">
@@ -29,7 +33,10 @@ function Board(props) {
                         // copy board
                         const newBoard = [...board];
                         // get current player
-                        const playerToken = window.tokens[turnNumber % 3];
+                        const currentPlayer = players?.findIndex(
+                          (p) => p.isActivePlayer
+                        );
+                        const playerToken = players[currentPlayer].token;
 
                         event.currentTarget.classList.add(playerToken);
 
@@ -38,29 +45,39 @@ function Board(props) {
                         // console.log(`(${rowNumber}, ${cellNumber})`);
                         setBoard(newBoard);
 
-                        const winner = checkWinningConditions(
+                        const sequence = checkWinningConditions(
                           newBoard,
                           playerToken,
                           { rowNumber, cellNumber }
                         );
 
-                        if (winner) {
-                          const copyTeams = [...teams];
+                        if (sequence) {
+                          const copyTeams = Object.assign({}, teams);
 
-                          const foundIndex = teams.findIndex(
-                            (player) => player.token === playerToken
-                          );
-                          copyTeams[foundIndex].sequenceCount =
-                            copyTeams[foundIndex].sequenceCount + 1;
+                          const currentPlayersTeam = teams[playerToken];
+
+                          currentPlayersTeam.sequenceCount += 1;
 
                           // in case the current team has accomplished 2 sequences, the game is over and should stop
-                          if (copyTeams[foundIndex].sequenceCount === 2) {
+                          if (currentPlayersTeam.sequenceCount === 2) {
                             alert(`${playerToken} won!`);
                             setTeams(copyTeams);
                             return;
                           }
                           setTeams(copyTeams);
                         }
+
+                        const copyPlayers = [...players];
+
+                        copyPlayers[currentPlayer].isActivePlayer = false;
+
+                        if (players.length - 1 === currentPlayer) {
+                          copyPlayers[0].isActivePlayer = true;
+                        } else {
+                          copyPlayers[currentPlayer + 1].isActivePlayer = true;
+                        }
+
+                        setPlayers(copyPlayers);
 
                         setTurnNumber(turnNumber + 1);
                       }}
@@ -220,24 +237,5 @@ function checkDiagonals(board, token, position) {
 
   return sequence;
 }
-
-Board.propTypes = {
-  teams: PropTypes.arrayOf(
-    PropTypes.shape({
-      members: PropTypes.arrayOf(
-        PropTypes.shape({
-          name: PropTypes.string,
-        })
-      ),
-      token: PropTypes.string,
-      startedCurrentRound: PropTypes.bool,
-      isActivePlayer: PropTypes.bool,
-      sequenceCount: PropTypes.number,
-    })
-  ),
-  setTeams: PropTypes.func,
-  turnNumber: PropTypes.number,
-  setTurnNumber: PropTypes.func,
-};
 
 export default Board;

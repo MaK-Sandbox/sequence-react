@@ -3,6 +3,9 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 
+// Duplicate the deck to create two decks
+window.cards = createDeck();
+
 window.boardLayout = [
   ["X", "♠️2", "♠️3", "♠️4", "♠️5", "♠️6", "♠️7", "♠️8", "♠️9", "X"],
   ["♣️6", "♣️5", "♣️4", "♣️3", "♣️2", "♥️A", "♥️K", "♥️Q", "♥️10", "♠️10"],
@@ -20,6 +23,77 @@ window.board = createBoard(window.boardLayout);
 
 window.tokens = ["🔵", "🔴", "🟢"];
 
+window.teams = {
+  "🔵": {
+    sequenceCount: 0,
+  },
+  "🔴": {
+    sequenceCount: 0,
+  },
+  "🟢": {
+    sequenceCount: 0,
+  },
+};
+
+window.players = [
+  {
+    name: "Sam",
+    token: "🔵",
+    startedCurrentRound: true,
+    isActivePlayer: true,
+  },
+  {
+    name: "Eva",
+    token: "🔴",
+    startedCurrentRound: false,
+    isActivePlayer: false,
+  },
+  {
+    name: "Niels",
+    token: "🟢",
+    startedCurrentRound: false,
+    isActivePlayer: false,
+  },
+  {
+    name: "Lisa",
+    token: "🔵",
+    startedCurrentRound: false,
+    isActivePlayer: false,
+  },
+  {
+    name: "Joel",
+    token: "🔴",
+    startedCurrentRound: false,
+    isActivePlayer: false,
+  },
+
+  {
+    name: "Jamal",
+    token: "🟢",
+    startedCurrentRound: false,
+    isActivePlayer: false,
+  },
+  {
+    name: "Lisa",
+    token: "🔵",
+    startedCurrentRound: false,
+    isActivePlayer: false,
+  },
+  {
+    name: "Joel",
+    token: "🔴",
+    startedCurrentRound: false,
+    isActivePlayer: false,
+  },
+
+  {
+    name: "Jamal",
+    token: "🟢",
+    startedCurrentRound: false,
+    isActivePlayer: false,
+  },
+];
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <App />
@@ -35,4 +109,47 @@ function createBoard(layout) {
   );
 
   return board;
+}
+
+function createDeck() {
+  const suits = ["♣️", "♠️", "♦️", "♥️"];
+  const values = [
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "J",
+    "Q",
+    "K",
+    "A",
+  ];
+
+  const deck = [];
+
+  // Create a single deck
+  for (const suit of suits) {
+    for (const value of values) {
+      const card = `${suit}${value}`;
+      deck.push(card);
+    }
+  }
+
+  // Duplicate the deck to create two decks
+  return shuffleCards([...deck, ...deck]);
+}
+
+function shuffleCards(cards) {
+  const shuffledDeck = [...cards];
+
+  for (let i = shuffledDeck.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffledDeck[i], shuffledDeck[j]] = [shuffledDeck[j], shuffledDeck[i]];
+  }
+
+  return shuffledDeck;
 }
