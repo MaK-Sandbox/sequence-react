@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./App.module.css";
 import Players from "./Component/Players";
 import Board from "./Component/Board";
@@ -12,6 +12,11 @@ export default function App() {
   const [players, setPlayers] = useState([...window.players]);
   const [drawPile, setDrawPile] = useState([...window.cards]);
   // const [discardPile, setDiscardPile] = useState([]);
+  const [playedCard, setPlayedCard] = useState("");
+
+  useEffect(() => {
+    console.log("playedCard: ", playedCard);
+  }, [playedCard]);
 
   return (
     <div className={style["game-view"]}>
@@ -26,7 +31,10 @@ export default function App() {
         setPlayers={setPlayers}
       />
       <Piles drawCard={drawCard} />
-      <Hand cards={players.find((p) => p.isYou).cards} />
+      <Hand
+        cards={players.find((p) => p.isYou).cards}
+        setPlayedCard={setPlayedCard}
+      />
     </div>
   );
 
