@@ -1,9 +1,9 @@
 import Player from "./Player";
-import "./Players.css";
+import style from "./Players.module.css";
 
 function Players({ players }) {
   return (
-    <div className="Players">
+    <div className={style["Players"]}>
       <h2>Players</h2>
       {players?.length > 0
         ? players.map((player, index) => {

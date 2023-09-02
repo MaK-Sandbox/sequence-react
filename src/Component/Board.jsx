@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Board.css";
+import style from "./Board.module.css";
 
 function Board({
   teams,
@@ -12,16 +12,16 @@ function Board({
   const [board, setBoard] = useState(window.board);
 
   return (
-    <div className="Board">
+    <div className={style["Board"]}>
       <table>
         <tbody>
           {board.map((row, rowNumber) => {
             return (
-              <tr className="Row" key={rowNumber}>
+              <tr className={style["Row"]} key={rowNumber}>
                 {row.map((cell, cellNumber) => {
                   return (
                     <td
-                      className="Cell"
+                      className={style["Cell"]}
                       data-row={rowNumber}
                       data-cell={cellNumber}
                       key={cellNumber}
