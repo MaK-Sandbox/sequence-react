@@ -17,6 +17,11 @@
   padding: 0.25em 0;
 }
 
+.Cell > *,
+.Cell {
+  background-color: var(--card-color);
+}
+
 .Cell:hover {
   background-color: bisque;
 }
