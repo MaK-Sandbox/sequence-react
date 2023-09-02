@@ -1,4 +1,23 @@
 .Scores {
   grid-column: 2;
   grid-row: 1;
+
+  background-color: var(--secondary-color);
+  padding: var(--default-padding);
+  margin: var(--default-margin);
+  border-radius: var(--default-border-radius);
+}
+
+.Scores h2 {
+  text-align: center;
+  padding-bottom: calc(var(--default-padding) / 2);
+}
+
+.Current-scores {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+}
+
+.Score {
+  text-align: center;
 }
