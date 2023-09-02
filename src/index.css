@@ -17,4 +17,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  /* Custom variablse */
+  --default-padding: 1em;
+  --default-margin: 0.75em;
+  --default-border-radius: 0.25em;
+  --secondary-color: rgb(213, 213, 213);
 }

@@ -1,8 +1,8 @@
 .Players {
-  background-color: rgb(213, 213, 213);
-  padding: 1em;
-  margin: 0.75em;
-  border-radius: 0.25em;
+  background-color: var(--secondary-color);
+  padding: var(--default-padding);
+  margin: var(--default-margin);
+  border-radius: var(--default-border-radius);
 
   grid-column: 1;
   grid-row: 2;
