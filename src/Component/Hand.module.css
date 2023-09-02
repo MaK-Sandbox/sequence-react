@@ -1,4 +1,33 @@
 .Hand {
   grid-column: 2;
   grid-row: 3;
+
+  background-color: var(--secondary-color);
+  padding: var(--default-padding);
+  margin: var(--default-margin);
+  border-radius: var(--default-border-radius);
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 0.35em;
+}
+
+.Card > *,
+.Card {
+  background-color: var(--card-color);
+}
+
+.Card {
+  width: var(--card-width);
+  height: var(--card-height);
+  border: var(--card-border);
+  border-radius: var(--card-border-radius);
+}
+
+.Card:hover {
+  border-color: green;
+  box-shadow: 0.15em 0.15em 0.3em green;
 }
