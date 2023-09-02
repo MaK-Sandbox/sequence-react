@@ -19,14 +19,15 @@
   -webkit-text-size-adjust: 100%;
 
   /* Custom variablse */
-  --default-padding: 1em;
+  --default-padding: calc(1em / 3);
   --default-margin: 0.75em;
   --default-border-radius: 0.25em;
   --secondary-color: rgb(213, 213, 213);
 
   /* Playing card dimensions */
-  --card-height: 3.5em;
-  --card-width: 2.5em;
+  --card-height: auto;
+  --card-width: 2.55em;
+  --card-aspect-ratio: 0.7;
   --card-border: 0.02em solid black;
   --card-border-radius: 0.15em;
   --card-color: #ffffff;
