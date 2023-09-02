@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import Players from "./Component/Players";
 import Board from "./Component/Board";
-import Cards from "./Component/Cards";
+import Piles from "./Component/Piles";
 import "./App.css";
 import Hand from "./Component/Hand";
+import Scores from "./Component/Scores";
 
 function App() {
   const [turnNumber, setTurnNumber] = useState(0);
@@ -20,6 +21,7 @@ function App() {
   return (
     <div className="game-view">
       <Players players={players} />
+      <Scores />
       <Board
         teams={teams}
         setTeams={setTeams}
@@ -28,7 +30,7 @@ function App() {
         players={players}
         setPlayers={setPlayers}
       />
-      <Cards drawCard={drawCard} />
+      <Piles drawCard={drawCard} />
       <Hand cards={players.find((p) => p.isYou).cards} />
     </div>
   );

@@ -12,16 +12,16 @@ function Board({
   const [board, setBoard] = useState(window.board);
 
   return (
-    <div className="board">
+    <div className="Board">
       <table>
         <tbody>
           {board.map((row, rowNumber) => {
             return (
-              <tr className="row" key={rowNumber}>
+              <tr className="Row" key={rowNumber}>
                 {row.map((cell, cellNumber) => {
                   return (
                     <td
-                      className="cell"
+                      className="Cell"
                       data-row={rowNumber}
                       data-cell={cellNumber}
                       key={cellNumber}

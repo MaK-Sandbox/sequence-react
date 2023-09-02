@@ -1,11 +1,11 @@
-function Hand({ cards }) {
+import "./Hand.css";
+
+export default function Hand({ cards }) {
   return (
-    <div className="hand">
+    <div className="Hand">
       {cards.map((card, index) => (
         <span key={index}>{card}</span>
       ))}
     </div>
   );
 }
-
-export default Hand;
