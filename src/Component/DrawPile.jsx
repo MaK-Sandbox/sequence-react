@@ -1,4 +1,4 @@
-function DrawPile({ drawCard }) {
+export default function DrawPile({ drawCard }) {
   return (
     <div
       onClick={() => {
@@ -10,5 +10,3 @@ function DrawPile({ drawCard }) {
     </div>
   );
 }
-
-export default DrawPile;

@@ -6,7 +6,7 @@ import Piles from "./Component/Piles";
 import Hand from "./Component/Hand";
 import Scores from "./Component/Scores";
 
-function App() {
+export default function App() {
   const [turnNumber, setTurnNumber] = useState(0);
   const [teams, setTeams] = useState(window.teams);
   const [players, setPlayers] = useState([...window.players]);
@@ -16,7 +16,7 @@ function App() {
   return (
     <div className={style["game-view"]}>
       <Players players={players} />
-      <Scores />
+      <Scores teams={teams} />
       <Board
         teams={teams}
         setTeams={setTeams}
@@ -38,5 +38,3 @@ function App() {
     return card;
   }
 }
-
-export default App;

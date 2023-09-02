@@ -1,5 +1,3 @@
-function DiscardPile(props) {
+export default function DiscardPile() {
   return <div>DISCARDED</div>;
 }
-
-export default DiscardPile;

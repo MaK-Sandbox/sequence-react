@@ -2,7 +2,7 @@ import style from "./Piles.module.css";
 import DiscardPile from "./DiscardPile";
 import DrawPile from "./DrawPile";
 
-function Piles({ drawCard }) {
+export default function Piles({ drawCard }) {
   return (
     <div className={style["Piles"]}>
       <DiscardPile />
@@ -10,5 +10,3 @@ function Piles({ drawCard }) {
     </div>
   );
 }
-
-export default Piles;

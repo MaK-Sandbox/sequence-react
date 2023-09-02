@@ -1,7 +1,7 @@
 import Player from "./Player";
 import style from "./Players.module.css";
 
-function Players({ players }) {
+export default function Players({ players }) {
   return (
     <div className={style["Players"]}>
       <h2>Players</h2>
@@ -21,5 +21,3 @@ function Players({ players }) {
     </div>
   );
 }
-
-export default Players;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import style from "./Board.module.css";
 
-function Board({
+export default function Board({
   teams,
   setTeams,
   turnNumber,
@@ -237,5 +237,3 @@ function checkDiagonals(board, token, position) {
 
   return sequence;
 }
-
-export default Board;

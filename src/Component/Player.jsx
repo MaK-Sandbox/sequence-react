@@ -1,7 +1,6 @@
-import PropTypes from "prop-types";
 import "./Player.css";
 
-function Player(props) {
+export default function Player(props) {
   const { name, token, startedCurrentRound, isActivePlayer } = props;
   return (
     <div className={isActivePlayer ? "Player Active" : "Player"}>
@@ -13,12 +12,3 @@ function Player(props) {
     </div>
   );
 }
-
-Player.propTypes = {
-  name: PropTypes.string,
-  token: PropTypes.string,
-  startedCurrentRound: PropTypes.bool,
-  isActivePlayer: PropTypes.bool,
-};
-
-export default Player;
