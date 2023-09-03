@@ -131,6 +131,7 @@ function createBoard(layout) {
     row.map((cell) => ({
       face: cell,
       token: null,
+      sequences: [],
     }))
   );
 

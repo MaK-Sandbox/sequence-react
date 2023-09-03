@@ -8,8 +8,13 @@ export default function Board({
   setTurnNumber,
   players,
   setPlayers,
+  playedCard,
 }) {
   const [board, setBoard] = useState(window.board);
+
+  function isHighlighted(playedCard, cell) {
+    return playedCard === cell.face && !cell.token;
+  }
 
   return (
     <div className={style["Board"]}>
@@ -21,7 +26,11 @@ export default function Board({
                 {row.map((cell, cellNumber) => {
                   return (
                     <td
-                      className={style["Cell"]}
+                      className={`${style["Cell"]} ${
+                        isHighlighted(playedCard, cell)
+                          ? style["highlighted"]
+                          : ""
+                      }`}
                       data-row={rowNumber}
                       data-cell={cellNumber}
                       key={cellNumber}

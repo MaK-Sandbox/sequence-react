@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import style from "./App.module.css";
 import Players from "./Component/Players";
 import Board from "./Component/Board";
@@ -14,10 +14,6 @@ export default function App() {
   // const [discardPile, setDiscardPile] = useState([]);
   const [playedCard, setPlayedCard] = useState("");
 
-  useEffect(() => {
-    console.log("playedCard: ", playedCard);
-  }, [playedCard]);
-
   return (
     <div className={style["game-view"]}>
       <Players players={players} />
@@ -29,6 +25,7 @@ export default function App() {
         setTurnNumber={setTurnNumber}
         players={players}
         setPlayers={setPlayers}
+        playedCard={playedCard}
       />
       <Piles drawCard={drawCard} />
       <Hand
