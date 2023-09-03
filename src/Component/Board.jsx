@@ -14,7 +14,15 @@ export default function Board({
 
   function isHighlighted(playedCard, cell) {
     /**
-     * Red jacks means that the current player can remove any token on the board that is not a part of a requence.
+     * Black jacks mean that the current player can place a token on any free spot on the board.
+     * We do not want cells with the face of "X" to be highlighted.
+     */
+    if (["♣️J", "♠️J"].includes(playedCard) && cell.face !== "X") {
+      return !cell.token;
+    }
+
+    /**
+     * Red jacks mean that the current player can remove any token on the board that is not a part of a requence.
      * We do not want cells with the face of "X" to be highlighted.
      */
     if (["♦️J", "♥️J"].includes(playedCard) && cell.face !== "X") {
