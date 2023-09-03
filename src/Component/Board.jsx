@@ -13,10 +13,17 @@ export default function Board({
   const [board, setBoard] = useState(window.board);
 
   function isHighlighted(playedCard, cell) {
+    /**
+     * Red jacks means that the current player can remove any token on the board that is not a part of a requence.
+     * We do not want cells with the face of "X" to be highlighted.
+     */
     if (["♦️J", "♥️J"].includes(playedCard) && cell.face !== "X") {
       return cell.sequences.length === 0 && cell.token;
     }
 
+    /**
+     * Highlight any cell which face matches the selected card, as long as the cell is not already occupied by a token.
+     */
     return playedCard === cell.face && !cell.token;
   }
 
