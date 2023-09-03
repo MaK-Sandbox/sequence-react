@@ -13,6 +13,10 @@ export default function Board({
   const [board, setBoard] = useState(window.board);
 
   function isHighlighted(playedCard, cell) {
+    if (["♦️J", "♥️J"].includes(playedCard) && cell.face !== "X") {
+      return cell.sequences.length === 0 && cell.token;
+    }
+
     return playedCard === cell.face && !cell.token;
   }
 
