@@ -1,7 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import App from "./App.jsx";
 import "./index.css";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <h1>Home</h1>,
+  },
+]);
 
 // Duplicate the deck to create two decks
 window.cards = createDeck();
@@ -122,7 +130,8 @@ function dealCards(cardsPerPlayer) {
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
