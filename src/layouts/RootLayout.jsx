@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
-import "./RootLayout.css";
+import style from "./RootLayout.module.css";
 
 export default function RootLayout() {
   return (
-    <div className="rootLayout">
+    <div className={style["rootLayout"]}>
       <Outlet />
     </div>
   );
