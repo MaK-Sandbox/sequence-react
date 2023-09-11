@@ -1,12 +1,4 @@
 .home-page {
-  height: 100vh;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.container {
   height: 35rem;
   width: 25rem;
   padding: calc(6 * var(--default-padding));
