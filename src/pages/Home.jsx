@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Home.css";
 
 export default function Home() {
@@ -16,7 +17,7 @@ export default function Home() {
         <span className="join-table">
           <h2>Join table</h2>
           <input type="text" placeholder="table id" />
-          <button>JOIN</button>
+          <Link to="/join-table">JOIN</Link>
         </span>
       </div>
     </div>
