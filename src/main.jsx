@@ -8,6 +8,8 @@ import JoinTable from "./pages/JoinTable";
 import CreateTable from "./pages/CreateTable";
 import "./index.css";
 
+window.API_URL = "http://localhost:5431";
+
 const router = createBrowserRouter([
   {
     path: "/",
