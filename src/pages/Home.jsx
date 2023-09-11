@@ -20,12 +20,12 @@ export default function Home() {
       </span>
       <span className="create-table-container">
         <h2>Create new table</h2>
-        <Link to="/create-table">Create table</Link>
+        <Link to="/table/create">Create table</Link>
       </span>
       <span className="join-table-container">
         <h2>Join table</h2>
         <input type="text" placeholder="table id" />
-        <Link to="/join-table">Join</Link>
+        <Link to="/table/join">Join</Link>
       </span>
     </div>
   );
