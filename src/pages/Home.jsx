@@ -1,14 +1,25 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 
 export default function Home() {
+  const [tempName, setTempName] = useState("");
+  const [name, setName] = useState("");
+
   return (
     <div className="home-page">
       <div className="container">
+        {name === "" ? null : (
+          <span className="hello-player">Hello {name}</span>
+        )}
         <span className="set-name-container">
           <h2>Choose a name</h2>
-          <input type="text" placeholder="name" />
-          <button>SAVE</button>
+          <input
+            type="text"
+            placeholder="name"
+            onChange={(event) => setTempName(event.target.value)}
+          />
+          <button onClick={() => setName(tempName)}>SAVE</button>
         </span>
         <span className="create-table-container">
           <h2>Create new table</h2>
