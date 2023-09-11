@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import "./CreateTable.css";
 import Lobby from "../Component/Lobby";
 import { useEffect, useState } from "react";
 
 export default function CreateTable() {
   const [table, setTable] = useState({});
+  const [wsMessage, socket] = useOutletContext();
 
   useEffect(() => {
     createTable();
@@ -25,11 +26,18 @@ export default function CreateTable() {
   return (
     <div className="create-table">
       <div className="flex">
-        <button>Ready?</button>
+        <button
+          onClick={() => {
+            console.log("emitting message");
+            socket.emit("message", "Hello from CreateTable.jsx");
+          }}
+        >
+          Ready?
+        </button>
         <button>Start</button>
         <button>Invite</button>
       </div>
-
+      {wsMessage}
       <div>
         <Lobby players={table?.players} />
       </div>

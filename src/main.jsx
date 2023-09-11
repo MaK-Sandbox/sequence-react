@@ -1,6 +1,6 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { io } from "socket.io-client";
 // import App from "./App.jsx";
 import RootLayout from "./layouts/RootLayout";
 import Home from "./pages/Home";
@@ -9,6 +9,8 @@ import CreateTable from "./pages/CreateTable";
 import "./index.css";
 
 window.API_URL = "http://localhost:5431";
+
+window.socket = io(window.API_URL);
 
 const router = createBrowserRouter([
   {
@@ -149,10 +151,7 @@ function dealCards(cardsPerPlayer) {
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    {/* <App /> */}
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <RouterProvider router={router} />
 );
 
 function createBoard(layout) {
