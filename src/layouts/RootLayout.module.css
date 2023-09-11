@@ -6,9 +6,7 @@
   align-items: center;
 }
 
-.rootLayout div {
-  height: 35rem;
-  width: 25rem;
+.rootLayout > div {
   padding: calc(6 * var(--default-padding));
   background-color: var(--secondary-color);
   border-radius: var(--default-border-radius);
