@@ -5,16 +5,16 @@ export default function Home() {
   return (
     <div className="home-page">
       <div className="container">
-        <span className="set-name">
+        <span className="set-name-container">
           <h2>Choose a name</h2>
           <input type="text" placeholder="name" />
           <button>SAVE</button>
         </span>
-        <span className="create-table">
+        <span className="create-table-container">
           <h2>Create new table</h2>
           <button>Create table</button>
         </span>
-        <span className="join-table">
+        <span className="join-table-container">
           <h2>Join table</h2>
           <input type="text" placeholder="table id" />
           <Link to="/join-table">JOIN</Link>
