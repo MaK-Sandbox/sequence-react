@@ -23,7 +23,7 @@ export default function Home() {
         </span>
         <span className="create-table-container">
           <h2>Create new table</h2>
-          <button>Create table</button>
+          <Link to="/create-table">Create table</Link>
         </span>
         <span className="join-table-container">
           <h2>Join table</h2>

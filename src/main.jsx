@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
 import Home from "./pages/Home";
 import JoinTable from "./pages/JoinTable";
+import CreateTable from "./pages/CreateTable";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/join-table",
         element: <JoinTable />,
+      },
+      {
+        path: "/create-table",
+        element: <CreateTable />,
       },
     ],
   },
