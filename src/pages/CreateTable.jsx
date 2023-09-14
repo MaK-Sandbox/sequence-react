@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 export default function CreateTable() {
   const [table, setTable] = useState({});
   const [wsMessage, socket] = useOutletContext();
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     createTable();
@@ -27,9 +28,11 @@ export default function CreateTable() {
     <div className="create-table">
       <div className="flex">
         <button
-          onClick={() => {
+          className={isReady ? "ready" : ""}
+          onClick={(event) => {
             console.log("emitting message");
             socket.emit("message", "Hello from CreateTable.jsx");
+            alternateIsReady(isReady, setIsReady, event);
           }}
         >
           Ready?
@@ -45,4 +48,13 @@ export default function CreateTable() {
       <Link to="/">🡸 Go back to Main Menu</Link>
     </div>
   );
+}
+
+function alternateIsReady(isReady, setIsReady, event) {
+  const isReadyCopy = !isReady;
+  setIsReady(isReadyCopy);
+
+  isReadyCopy
+    ? (event.target.innerText = "Ready!")
+    : (event.target.innerText = "Ready?");
 }
