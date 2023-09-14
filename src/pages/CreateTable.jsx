@@ -54,6 +54,7 @@ function alternateIsReady(isReady, setIsReady, event) {
   const isReadyCopy = !isReady;
   setIsReady(isReadyCopy);
 
+  // alter button text
   isReadyCopy
     ? (event.target.innerText = "Ready!")
     : (event.target.innerText = "Ready?");
