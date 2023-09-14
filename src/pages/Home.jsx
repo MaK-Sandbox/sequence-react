@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import "./Home.css";
 
 export default function Home() {
   const [tempName, setTempName] = useState("");
   const [name, setName] = useState("");
+  const [wsMessage, socket] = useOutletContext();
 
   return (
     <div className="home-page">
@@ -16,7 +17,15 @@ export default function Home() {
           placeholder="name"
           onChange={(event) => setTempName(event.target.value)}
         />
-        <button onClick={() => setName(tempName)}>SAVE</button>
+        <button
+          onClick={() => {
+            setName(tempName);
+            console.log("Send player name to backend...");
+            socket.emit("username", tempName);
+          }}
+        >
+          SAVE
+        </button>
       </span>
       <span className="create-table-container">
         <h2>Create new table</h2>
