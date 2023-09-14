@@ -5,11 +5,13 @@ import "./Home.css";
 export default function Home() {
   const [tempName, setTempName] = useState("");
   const [name, setName] = useState("");
-  const [wsMessage, socket] = useOutletContext();
+  const { wsName, socket } = useOutletContext();
 
   return (
     <div className="home-page">
-      {name === "" ? null : <span className="hello-player">Hello {name}</span>}
+      {name === "" ? null : (
+        <span className="hello-player">{`Hello ${wsName}`}</span>
+      )}
       <span className="set-name-container">
         <h2>Choose a name</h2>
         <input
@@ -32,12 +34,12 @@ export default function Home() {
       </span>
       <span className="create-table-container">
         <h2>Create new table</h2>
-        <Link to="/table/create">Create table</Link>
+        <Link to="/matches/create">Create table</Link>
       </span>
       <span className="join-table-container">
         <h2>Join table</h2>
         <input type="text" placeholder="table id" />
-        <Link to="/table/join">Join</Link>
+        <Link to="/matches/join">Join</Link>
       </span>
     </div>
   );

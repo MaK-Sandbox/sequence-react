@@ -22,11 +22,11 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/table/join",
+        path: "/matches/join/:tableId",
         element: <JoinTable />,
       },
       {
-        path: "/table/create",
+        path: "/matches/create",
         element: <CreateTable />,
       },
     ],
