@@ -2,25 +2,20 @@ import { Link, useOutletContext } from "react-router-dom";
 import "./CreateTable.css";
 import Lobby from "../Component/Lobby";
 import { useEffect, useState } from "react";
+import postData from "../utilities/postData";
 
 export default function CreateTable() {
-  const [table, setTable] = useState({});
-  const [wsMessage, socket] = useOutletContext();
+  const { wsTable, setWsTable, socket } = useOutletContext();
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     createTable();
 
     async function createTable() {
-      const response = await fetch(`${window.API_URL}/matches/create`, {
-        method: "POST",
+      const table = await postData(`${window.API_URL}/matches/create`, {
+        adminId: window.socket.id,
       });
-      if (!response.ok) {
-        // handle error
-        return;
-      }
-      const table = await response.json();
-      setTable(table);
+      setWsTable(table);
     }
   }, []);
 
@@ -40,9 +35,9 @@ export default function CreateTable() {
         <button>Start</button>
         <button>Invite</button>
       </div>
-      {wsMessage}
       <div>
-        <Lobby players={table?.players} />
+        Match ID: {wsTable.id}
+        <Lobby players={wsTable?.players} />
       </div>
 
       <Link to="/">🡸 Go back to Main Menu</Link>
