@@ -22,6 +22,9 @@ export default function Home() {
             setName(tempName);
             console.log("Send player name to backend...");
             socket.emit("username", tempName);
+            socket.on("username", (username) =>
+              console.log("username from backend:", username)
+            );
           }}
         >
           SAVE
