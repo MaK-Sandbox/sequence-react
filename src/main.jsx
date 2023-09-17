@@ -1,7 +1,37 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { io } from "socket.io-client";
+// import App from "./App.jsx";
+import RootLayout from "./layouts/RootLayout";
+import Home from "./pages/Home";
+import JoinTable from "./pages/JoinTable";
+import CreateTable from "./pages/CreateTable";
 import "./index.css";
+
+window.API_URL = "http://localhost:5431";
+
+window.socket = io(window.API_URL);
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: "/matches/join/:tableId",
+        element: <JoinTable />,
+      },
+      {
+        path: "/matches/create",
+        element: <CreateTable />,
+      },
+    ],
+  },
+]);
 
 // Duplicate the deck to create two decks
 window.cards = createDeck();
@@ -121,9 +151,7 @@ function dealCards(cardsPerPlayer) {
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <RouterProvider router={router} />
 );
 
 function createBoard(layout) {

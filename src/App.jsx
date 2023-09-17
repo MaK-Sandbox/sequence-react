@@ -7,7 +7,7 @@ import Hand from "./Component/Hand";
 import Scores from "./Component/Scores";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5431");
+const socket = io(window.API_URL);
 
 export default function App() {
   const [turnNumber, setTurnNumber] = useState(0);

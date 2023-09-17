@@ -1,0 +1,17 @@
+.rootLayout {
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rootLayout > div {
+  padding: calc(6 * var(--default-padding));
+  background-color: var(--secondary-color);
+  border-radius: var(--default-border-radius);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
