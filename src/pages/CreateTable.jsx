@@ -39,7 +39,9 @@ export default function CreateTable() {
         Match ID: {wsTable.id}
         <Lobby players={wsTable?.players} />
       </div>
-
+      <a href={gameLinkToUsers(wsTable.id)} target="_blank" rel="noreferrer">
+        Link to game
+      </a>
       <Link to="/">🡸 Go back to Main Menu</Link>
     </div>
   );
@@ -53,4 +55,8 @@ function alternateIsReady(isReady, setIsReady, event) {
   isReadyCopy
     ? (event.target.innerText = "Ready!")
     : (event.target.innerText = "Ready?");
+}
+
+function gameLinkToUsers(matchId) {
+  return `http://localhost:5173/matches/join/${matchId}`;
 }
