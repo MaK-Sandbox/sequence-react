@@ -17,7 +17,7 @@ export default function CreateTable() {
       });
       setWsTable(table);
     }
-  }, []);
+  }, [setWsTable]);
 
   return (
     <div className="create-table">
@@ -32,8 +32,12 @@ export default function CreateTable() {
         >
           Ready?
         </button>
-        <button>Start</button>
-        <button>Invite</button>
+        {socket.id === wsTable.admin ? (
+          <>
+            <button>Start</button>
+            <button>Invite</button>
+          </>
+        ) : null}
       </div>
       <div>
         Match ID: {wsTable.id}
@@ -58,5 +62,6 @@ function alternateIsReady(isReady, setIsReady, event) {
 }
 
 function gameLinkToUsers(matchId) {
-  return `http://localhost:5173/matches/join/${matchId}`;
+  if (process.env.NODE_ENV == "development")
+    return `http://localhost:5173/matches/join/${matchId}`;
 }
