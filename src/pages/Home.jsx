@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
+import { updateUsername } from "../communications";
 import "./Home.css";
 
 export default function Home() {
   const [tempName, setTempName] = useState("");
-  const [name, setName] = useState("");
-  const { wsName, socket } = useOutletContext();
+  const { username } = useOutletContext();
 
   return (
     <div className="home-page">
-      {name === "" ? null : (
-        <span className="hello-player">{`Hello ${wsName}`}</span>
+      {username === "" ? null : (
+        <span className="hello-player">{`Hello ${username}`}</span>
       )}
       <span className="set-name-container">
         <h2>Choose a name</h2>
@@ -21,12 +21,7 @@ export default function Home() {
         />
         <button
           onClick={() => {
-            setName(tempName);
-            console.log("Send player name to backend...");
-            socket.emit("username", tempName);
-            socket.on("username", (username) =>
-              console.log("username from backend:", username)
-            );
+            updateUsername(tempName);
           }}
         >
           SAVE

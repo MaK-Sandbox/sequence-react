@@ -6,7 +6,7 @@ export default function RootLayout() {
   const [isConnected, setIsConnected] = useState(false);
   const [socket] = useState(window.socket);
   const [wsMessage, setWsMessage] = useState("");
-  const [wsName, setWsName] = useState("");
+  const [username, setUsername] = useState("");
   const [wsTable, setWsTable] = useState({});
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function RootLayout() {
 
     function onName(name) {
       console.log(name);
-      setWsName(name);
+      setUsername(name);
     }
 
     function onTable(table) {
@@ -50,7 +50,15 @@ export default function RootLayout() {
 
   return (
     <div className={style["rootLayout"]}>
-      <Outlet context={{ wsMessage, wsName, wsTable, setWsTable, socket }} />
+      <Outlet
+        context={{
+          wsMessage,
+          username,
+          wsTable,
+          setWsTable,
+          socket,
+        }}
+      />
     </div>
   );
 }
