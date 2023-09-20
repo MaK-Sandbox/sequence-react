@@ -4,7 +4,7 @@ import { io } from "socket.io-client";
 // import App from "./App.jsx";
 import RootLayout from "./layouts/RootLayout";
 import Home from "./pages/Home";
-import JoinTable from "./pages/JoinTable";
+import JoinRoom from "./pages/JoinRoom";
 import CreateTable from "./pages/CreateTable";
 import "./index.css";
 
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/matches/join/:tableId",
-        element: <JoinTable />,
+        element: <JoinRoom />,
       },
       {
         path: "/matches/create",
