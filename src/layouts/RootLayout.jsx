@@ -28,6 +28,11 @@ export default function RootLayout() {
       setUsername(name);
     }
 
+    function onCreateMatch(match) {
+      console.log(match);
+      setWsTable(match);
+    }
+
     function onTable(table) {
       console.log(table);
       setWsTable(table);
@@ -37,6 +42,7 @@ export default function RootLayout() {
     socket.on("disconnect", onDisconnect);
     socket.on("message", onMessage);
     socket.on("username", onName);
+    socket.on("createMatch", onCreateMatch);
     socket.on("table", onTable);
 
     return () => {
@@ -44,6 +50,7 @@ export default function RootLayout() {
       socket.off("disconnect", onDisconnect);
       socket.off("message", onMessage);
       socket.off("username", onName);
+      socket.off("createMatch", onCreateMatch);
       socket.off("table", onTable);
     };
   }, [socket]);
