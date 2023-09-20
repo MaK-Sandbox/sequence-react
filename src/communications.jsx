@@ -7,6 +7,11 @@ export function updateUsername(username) {
   sendToServer("username", username);
 }
 
+export function createMatch() {
+  console.log("Send request to create a new match to backend...");
+  sendToServer("createMatch");
+}
+
 export function updateTable(table) {
   console.log("Sending new table state to backend...");
   sendToServer("table", table);
