@@ -1,8 +1,8 @@
-import { Link, useOutletContext } from "react-router-dom";
-import "./CreateTable.css";
-import Lobby from "../Component/Lobby";
 import { useEffect, useState } from "react";
+import { Link, useOutletContext } from "react-router-dom";
 import postData from "../utilities/postData";
+import Lobby from "../Component/Lobby";
+import "./CreateTable.css";
 
 export default function CreateTable() {
   const { wsTable, setWsTable, socket } = useOutletContext();
