@@ -1,23 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
-import postData from "../utilities/postData";
 import Lobby from "../Component/Lobby";
 import "./CreateTable.css";
 
 export default function CreateTable() {
-  const { wsTable, setWsTable, socket } = useOutletContext();
+  const { wsTable, socket } = useOutletContext();
   const [isReady, setIsReady] = useState(false);
-
-  useEffect(() => {
-    createTable();
-
-    async function createTable() {
-      const table = await postData(`${window.API_URL}/matches/create`, {
-        adminId: window.socket.id,
-      });
-      setWsTable(table);
-    }
-  }, [setWsTable]);
 
   return (
     <div className="create-table">
