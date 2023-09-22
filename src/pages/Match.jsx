@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import style from "./App.module.css";
-import Players from "./Component/Players";
-import Board from "./Component/Board";
-import Piles from "./Component/Piles";
-import Hand from "./Component/Hand";
-import Scores from "./Component/Scores";
+import style from "./Match.module.css";
+import Players from "../Component/Players";
+import Board from "../Component/Board";
+import Piles from "../Component/Piles";
+import Hand from "../Component/Hand";
+import Scores from "../Component/Scores";
 import { io } from "socket.io-client";
+// import Player from "../Component/Player";
 
 const socket = io(window.API_URL);
 

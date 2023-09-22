@@ -1,7 +1,7 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { io } from "socket.io-client";
-import App from "./App.jsx";
+import Match from "./pages/Match";
 import RootLayout from "./layouts/RootLayout";
 import Home from "./pages/Home";
 import JoinRoom from "./pages/JoinRoom";
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/matches/match",
-        element: <App />,
+        element: <Match />,
       },
     ],
   },
