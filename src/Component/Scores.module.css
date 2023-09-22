@@ -1,5 +1,5 @@
 .Scores {
-  grid-column: 2;
+  grid-column: 1;
   grid-row: 1;
 
   background-color: var(--secondary-color);
