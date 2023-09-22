@@ -17,6 +17,11 @@ export function updateTable(table) {
   sendToServer("table", table);
 }
 
+export function updateReady(ready) {
+  console.log("Sending player ready state to backend...");
+  sendToServer("ready", ready);
+}
+
 export function joinTable(tableId) {
   sendToServer("join", tableId);
 }

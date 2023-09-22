@@ -1,21 +1,27 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Link, useOutletContext } from "react-router-dom";
 import Lobby from "../Component/Lobby";
 import "./CreateTable.css";
+import { updateReady } from "../communications";
+import { useEffect } from "react";
 
 export default function CreateTable() {
-  const { wsTable, socket } = useOutletContext();
-  const [isReady, setIsReady] = useState(false);
+  const { wsTable, wsReady, socket } = useOutletContext();
+  // const [isReady, setIsReady] = useState(wsReady);
+
+  useEffect(() => {
+    console.log("CreateTable component:", wsReady);
+  }, [wsReady]);
 
   return (
     <div className="create-table">
       <div className="flex">
         <button
-          className={isReady ? "ready" : ""}
-          onClick={(event) => {
-            console.log("emitting message");
-            socket.emit("message", "Hello from CreateTable.jsx");
-            alternateIsReady(isReady, setIsReady, event);
+          className={wsReady ? "ready" : ""}
+          onClick={async (event) => {
+            const readyCopy = !wsReady;
+            updateReady(readyCopy);
+            alternateButtonText(event, readyCopy);
           }}
         >
           Ready?
@@ -39,12 +45,8 @@ export default function CreateTable() {
   );
 }
 
-function alternateIsReady(isReady, setIsReady, event) {
-  const isReadyCopy = !isReady;
-  setIsReady(isReadyCopy);
-
-  // alter button text
-  isReadyCopy
+function alternateButtonText(event, ready) {
+  ready
     ? (event.target.innerText = "Ready!")
     : (event.target.innerText = "Ready?");
 }

@@ -7,6 +7,7 @@ export default function RootLayout() {
   const [socket] = useState(window.socket);
   const [wsMessage, setWsMessage] = useState("");
   const [username, setUsername] = useState("");
+  const [wsReady, setWsReady] = useState(false);
   const [wsTable, setWsTable] = useState({});
 
   useEffect(() => {
@@ -28,6 +29,11 @@ export default function RootLayout() {
       setUsername(name);
     }
 
+    function onReady(ready) {
+      console.log(`Received from the backend: ${ready}`);
+      setWsReady(ready);
+    }
+
     function onCreateMatch(match) {
       console.log(match);
       setWsTable(match);
@@ -42,6 +48,7 @@ export default function RootLayout() {
     socket.on("disconnect", onDisconnect);
     socket.on("message", onMessage);
     socket.on("username", onName);
+    socket.on("ready", onReady);
     socket.on("createMatch", onCreateMatch);
     socket.on("table", onTable);
 
@@ -50,6 +57,7 @@ export default function RootLayout() {
       socket.off("disconnect", onDisconnect);
       socket.off("message", onMessage);
       socket.off("username", onName);
+      socket.off("ready", onReady);
       socket.off("createMatch", onCreateMatch);
       socket.off("table", onTable);
     };
@@ -61,6 +69,7 @@ export default function RootLayout() {
         context={{
           wsMessage,
           username,
+          wsReady,
           wsTable,
           setWsTable,
           socket,
