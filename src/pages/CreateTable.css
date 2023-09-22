@@ -1,3 +1,13 @@
+.create-table {
+  padding: calc(6 * var(--default-padding));
+  background-color: var(--secondary-color);
+  border-radius: var(--default-border-radius);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .flex {
   display: flex;
   justify-content: space-between;
