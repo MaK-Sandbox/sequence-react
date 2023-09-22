@@ -39,6 +39,11 @@ export default function RootLayout() {
       setWsTable(match);
     }
 
+    function onStartMatch(match) {
+      console.log(match);
+      setWsTable(match)
+    }
+
     function onTable(table) {
       console.log(table);
       setWsTable(table);
@@ -50,6 +55,7 @@ export default function RootLayout() {
     socket.on("username", onName);
     socket.on("ready", onReady);
     socket.on("createMatch", onCreateMatch);
+    socket.on("startMatch", onStartMatch);
     socket.on("table", onTable);
 
     return () => {
@@ -59,6 +65,7 @@ export default function RootLayout() {
       socket.off("username", onName);
       socket.off("ready", onReady);
       socket.off("createMatch", onCreateMatch);
+      socket.off("startMatch", onStartMatch);
       socket.off("table", onTable);
     };
   }, [socket]);

@@ -1,17 +1,20 @@
 // import { useState } from "react";
-import { Link, useOutletContext } from "react-router-dom";
+import { Link, useOutletContext, useNavigate } from "react-router-dom";
 import Lobby from "../Component/Lobby";
 import "./CreateTable.css";
-import { updateReady } from "../communications";
+import { startMatch, updateReady } from "../communications";
 import { useEffect } from "react";
 
 export default function CreateTable() {
   const { wsTable, wsReady, socket } = useOutletContext();
   // const [isReady, setIsReady] = useState(wsReady);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("CreateTable component:", wsReady);
-  }, [wsReady]);
+    if (wsTable.started) {
+      navigate("/matches/match");
+    }
+  }, [wsTable, navigate]);
 
   return (
     <div className="create-table">
@@ -28,7 +31,7 @@ export default function CreateTable() {
         </button>
         {socket.id === wsTable.admin ? (
           <>
-            <button>Start</button>
+            <button onClick={() => startMatch()}>Start</button>
             <button>Invite</button>
           </>
         ) : null}

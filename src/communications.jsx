@@ -25,3 +25,8 @@ export function updateReady(ready) {
 export function joinTable(tableId) {
   sendToServer("join", tableId);
 }
+
+export function startMatch() {
+  console.log("Sending start game state to backend...");
+  sendToServer("startMatch");
+}
