@@ -41,7 +41,7 @@ export default function RootLayout() {
 
     function onStartMatch(match) {
       console.log(match);
-      setWsTable(match)
+      setWsTable(match);
     }
 
     function onTable(table) {
@@ -72,16 +72,20 @@ export default function RootLayout() {
 
   return (
     <div className={style["rootLayout"]}>
-      <Outlet
-        context={{
-          wsMessage,
-          username,
-          wsReady,
-          wsTable,
-          setWsTable,
-          socket,
-        }}
-      />
+      {isConnected ? (
+        <Outlet
+          context={{
+            wsMessage,
+            username,
+            wsReady,
+            wsTable,
+            setWsTable,
+            socket,
+          }}
+        />
+      ) : (
+        "Connecting to game server..."
+      )}
     </div>
   );
 }
