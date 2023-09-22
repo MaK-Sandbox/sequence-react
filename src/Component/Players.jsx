@@ -10,10 +10,10 @@ export default function Players({ players }) {
             return (
               <Player
                 key={index}
-                name={player.name}
-                token={player.token}
-                startedCurrentRound={player.startedCurrentRound}
-                isActivePlayer={player.isActivePlayer}
+                name={player.username}
+                // token={player.token}
+                // startedCurrentRound={player.startedCurrentRound}
+                // isActivePlayer={player.isActivePlayer}
               />
             );
           })
