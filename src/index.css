@@ -6,6 +6,12 @@
   padding: 0;
 }
 
+html,
+body,
+#root {
+  min-height: 100vh;
+}
+
 :root {
   font-family: "Segoe UI Emoji", sans-serif;
   font-size: 1.5em;

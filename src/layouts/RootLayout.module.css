@@ -1,5 +1,5 @@
 .rootLayout {
-  height: 100%;
+  min-height: inherit;
 
   display: flex;
   justify-content: center;
