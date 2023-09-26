@@ -8,7 +8,6 @@ import ReadyButton from "../Component/ReadyButton";
 
 export default function CreateTable() {
   const { wsTable, socket } = useOutletContext();
-  // const [isReady, setIsReady] = useState(wsReady);
   const navigate = useNavigate();
 
   useEffect(() => {
