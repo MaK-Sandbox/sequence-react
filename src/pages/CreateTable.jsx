@@ -2,11 +2,12 @@
 import { Link, useOutletContext, useNavigate } from "react-router-dom";
 import Lobby from "../Component/Lobby";
 import "./CreateTable.css";
-import { startMatch, updateReady } from "../communications";
+import { startMatch } from "../communications";
 import { useEffect } from "react";
+import ReadyButton from "../Component/ReadyButton";
 
 export default function CreateTable() {
-  const { wsTable, wsReady, socket } = useOutletContext();
+  const { wsTable, socket } = useOutletContext();
   // const [isReady, setIsReady] = useState(wsReady);
   const navigate = useNavigate();
 
@@ -19,16 +20,7 @@ export default function CreateTable() {
   return (
     <div className="create-table">
       <div className="flex">
-        <button
-          className={wsReady ? "ready" : ""}
-          onClick={async (event) => {
-            const readyCopy = !wsReady;
-            updateReady(readyCopy);
-            alternateButtonText(event, readyCopy);
-          }}
-        >
-          Ready?
-        </button>
+        <ReadyButton />
         {socket.id === wsTable.admin ? (
           <>
             <button onClick={() => startMatch()}>Start</button>
@@ -46,12 +38,6 @@ export default function CreateTable() {
       <Link to="/">🡸 Go back to Main Menu</Link>
     </div>
   );
-}
-
-function alternateButtonText(event, ready) {
-  ready
-    ? (event.target.innerText = "Ready!")
-    : (event.target.innerText = "Ready?");
 }
 
 function gameLinkToUsers(matchId) {
