@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Link, useOutletContext, useParams } from "react-router-dom";
 import { joinTable } from "../communications";
+import ReadyButton from "../Component/ReadyButton";
 import Lobby from "../Component/Lobby";
 import "./JoinRoom.css";
-import ReadyButton from "../Component/ReadyButton";
 
 export default function JoinTable() {
   const { tableId } = useParams();
