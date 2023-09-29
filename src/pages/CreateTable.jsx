@@ -24,22 +24,21 @@ export default function CreateTable() {
         <ReadyButton />
         {socket.id === wsTable.admin ? (
           <>
-            <button onClick={() => startMatch()}>Start</button>
-            <button>Invite</button>
+            <button onClick={() => startMatch()}>Start match</button>
+            <button onClick={() => copyURL(wsTable.id)}>Copy match URL</button>
           </>
         ) : null}
       </div>
       <div>
         <Lobby players={wsTable?.players} />
       </div>
-      <a href={gameLinkToUsers(wsTable.id)} target="_blank" rel="noreferrer">
-        Link to game
-      </a>
     </div>
   );
 }
 
-function gameLinkToUsers(matchId) {
-  if (process.env.NODE_ENV == "development")
-    return `http://localhost:5173/matches/join/${matchId}`;
+function copyURL(matchId) {
+  const url = `http://localhost:5173/matches/join/${matchId}`;
+  navigator.clipboard.writeText(url);
+
+  alert("Copied the text: " + url);
 }

@@ -8,6 +8,10 @@
   justify-content: center;
 }
 
+.create-table div:last-of-type {
+  margin-bottom: 0;
+}
+
 .flex {
   margin: var(--default-margin) 0;
   display: flex;
@@ -16,4 +20,5 @@
 
 .flex > * {
   min-width: 8em;
+  padding: calc(1.75 * var(--default-padding));
 }
