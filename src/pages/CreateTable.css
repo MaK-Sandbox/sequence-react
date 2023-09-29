@@ -12,3 +12,7 @@
   display: flex;
   justify-content: space-between;
 }
+
+.flex > * {
+  min-width: 8em;
+}
