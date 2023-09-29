@@ -1,1 +1,8 @@
+.set-username {
+  margin: var(--default-margin) 0;
+}
 
+.hello-player {
+  color: green;
+  font-size: 0.75em;
+}

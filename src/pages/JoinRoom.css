@@ -7,3 +7,8 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.back-to-main-menu {
+  text-decoration: none;
+  margin-bottom: var(--default-margin);
+}

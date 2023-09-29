@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useOutletContext, useParams } from "react-router-dom";
 import { joinTable } from "../communications";
 import SetUsername from "../Component/SetUsername";
@@ -17,11 +17,22 @@ export default function JoinTable() {
 
   return (
     <div className="join-table">
+      <Link className="back-to-main-menu" to="/">
+        🡸 Go back to Main Menu
+      </Link>
+      <div className="welcome-message">
+        <h2>Welcome to Sequence Online</h2>
+        <p>You have been invited to join a Sequence Online game.</p>
+        <p>In the section below, you can set a player name.</p>
+        <p>
+          When you are ready to play, press the <q>Ready?</q> button and wait
+          for the other players.
+        </p>
+        <p>Good luck!</p>
+      </div>
       <SetUsername />
-      <ReadyButton />
-      <Link to="/">🡸 Go back to Main Menu</Link>
-      Match ID: {tableId}
       <Lobby players={wsTable?.players} />
+      <ReadyButton />
     </div>
   );
 }

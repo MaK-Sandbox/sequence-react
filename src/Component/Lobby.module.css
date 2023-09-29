@@ -1,0 +1,5 @@
+.Lobby {
+  padding: calc(3 * var(--default-padding));
+  margin-bottom: var(--default-margin);
+  background-color: rgb(129, 142, 152);
+}

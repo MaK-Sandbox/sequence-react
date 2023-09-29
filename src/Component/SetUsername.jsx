@@ -10,9 +10,9 @@ export default function SetUsername() {
   return (
     <div className={style["set-username"]}>
       {username === "" ? null : (
-        <span className="hello-player">{`Hello ${username}`}</span>
+        <span className={style["hello-player"]}>{`Hello ${username}!`}</span>
       )}
-      <span className="set-name-container">
+      <span className={style["set-name-container"]}>
         <h2>Choose a name</h2>
         <input
           type="text"

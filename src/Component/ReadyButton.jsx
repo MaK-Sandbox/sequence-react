@@ -7,12 +7,13 @@ export default function ReadyButton() {
 
   return (
     <button
-      className={wsReady ? style["ready"] : ""}
+      className={style["ready-btn"]}
       onClick={async (event) => {
         const readyCopy = !wsReady;
         updateReady(readyCopy);
         alternateButtonText(event, readyCopy);
       }}
+      disabled={wsReady}
     >
       Ready?
     </button>
@@ -21,6 +22,6 @@ export default function ReadyButton() {
 
 function alternateButtonText(event, ready) {
   ready
-    ? (event.target.innerText = "Ready!")
+    ? (event.target.innerText = "Waiting for other players...")
     : (event.target.innerText = "Ready?");
 }
