@@ -21,9 +21,9 @@ export default function ReadyButton() {
 }
 
 function alternateButtonText(event, ready, socket, wsTable) {
-  if ((ready && socket.id === wsTable.admin, wsTable)) {
+  if (ready && socket.id === wsTable.admin) {
     event.target.innerText = "Ready!";
   } else {
-    event.target.innerText = "Waiting for other players...";
+    event.target.innerText = "Ready! Waiting for other players...";
   }
 }
