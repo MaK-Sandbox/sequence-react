@@ -3,15 +3,15 @@ import { updateReady } from "../communications";
 import style from "./ReadyButton.module.css";
 
 export default function ReadyButton() {
-  const { wsReady } = useOutletContext();
+  const { wsTable, wsReady, socket } = useOutletContext();
 
   return (
     <button
       className={style["ready-btn"]}
-      onClick={async (event) => {
+      onClick={(event) => {
         const readyCopy = !wsReady;
         updateReady(readyCopy);
-        alternateButtonText(event, readyCopy);
+        alternateButtonText(event, readyCopy, socket, wsTable);
       }}
       disabled={wsReady}
     >
@@ -20,8 +20,10 @@ export default function ReadyButton() {
   );
 }
 
-function alternateButtonText(event, ready) {
-  ready
-    ? (event.target.innerText = "Waiting for other players...")
-    : (event.target.innerText = "Ready?");
+function alternateButtonText(event, ready, socket, wsTable) {
+  if ((ready && socket.id === wsTable.admin, wsTable)) {
+    event.target.innerText = "Ready!";
+  } else {
+    event.target.innerText = "Waiting for other players...";
+  }
 }

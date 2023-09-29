@@ -18,6 +18,8 @@ export default function CreateTable() {
 
   return (
     <div className="create-table">
+      <Link to="/">🡸 Go back to Main Menu</Link>
+
       <div className="flex">
         <ReadyButton />
         {socket.id === wsTable.admin ? (
@@ -28,13 +30,11 @@ export default function CreateTable() {
         ) : null}
       </div>
       <div>
-        Match ID: {wsTable.id}
         <Lobby players={wsTable?.players} />
       </div>
       <a href={gameLinkToUsers(wsTable.id)} target="_blank" rel="noreferrer">
         Link to game
       </a>
-      <Link to="/">🡸 Go back to Main Menu</Link>
     </div>
   );
 }
