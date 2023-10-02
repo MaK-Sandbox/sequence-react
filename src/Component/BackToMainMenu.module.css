@@ -1,0 +1,5 @@
+.back-to-main-menu {
+  color: var(--secondary-color);
+  text-decoration: none;
+  margin-bottom: var(--default-margin);
+}

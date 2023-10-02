@@ -1,6 +1,6 @@
 .create-table {
   padding: calc(6 * var(--default-padding));
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   border-radius: var(--default-border-radius);
 
   display: flex;

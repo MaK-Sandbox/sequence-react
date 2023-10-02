@@ -5,6 +5,7 @@ import SetUsername from "../Component/SetUsername";
 import ReadyButton from "../Component/ReadyButton";
 import Lobby from "../Component/Lobby";
 import "./JoinRoom.css";
+import BackToMainMenu from "../Component/BackToMainMenu";
 
 export default function JoinTable() {
   const { tableId } = useParams();
@@ -17,9 +18,7 @@ export default function JoinTable() {
 
   return (
     <div className="join-table">
-      <Link className="back-to-main-menu" to="/">
-        🡸 Go back to Main Menu
-      </Link>
+      <BackToMainMenu />
 
       {Object.keys(wsTable).length ? (
         <>

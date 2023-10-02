@@ -6,18 +6,11 @@
   padding: 0;
 }
 
-html,
-body,
-#root {
-  min-height: 100vh;
-}
-
 :root {
   font-family: "Segoe UI Emoji", sans-serif;
   font-size: 1.5em;
 
   /* color-scheme: light dark; */
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -28,7 +21,14 @@ body,
   --default-padding: calc(1em / 3);
   --default-margin: 0.75em;
   --default-border-radius: 0.25em;
-  --secondary-color: rgb(213, 213, 213);
+
+  /* Dark color theme */
+  --text-color: hsl(285 13% 94%);
+  --background-color: hsl(280 12% 5%);
+  --primary-color: hsl(104 12% 63%);
+  --secondary-color: hsl(283 14% 10%);
+  --accent-color: hsl(105 12% 50%);
+  --primary-color-darker: hsl(104 12% 40%);
 
   /* Playing card dimensions */
   --card-height: auto;
@@ -37,4 +37,11 @@ body,
   --card-border: 0.02em solid black;
   --card-border-radius: 0.15em;
   --card-color: #ffffff;
+}
+
+html,
+body,
+#root {
+  min-height: 100vh;
+  background-color: var(--background-color);
 }

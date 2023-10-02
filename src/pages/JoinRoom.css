@@ -1,14 +1,9 @@
 .join-table {
   padding: calc(6 * var(--default-padding));
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color-darker);
   border-radius: var(--default-border-radius);
 
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-.back-to-main-menu {
-  text-decoration: none;
-  margin-bottom: var(--default-margin);
 }

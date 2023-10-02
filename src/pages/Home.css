@@ -1,6 +1,6 @@
 .home-page {
+  background-color: var(--primary-color);
   padding: calc(6 * var(--default-padding));
-  background-color: var(--secondary-color);
   border-radius: var(--default-border-radius);
 
   display: flex;

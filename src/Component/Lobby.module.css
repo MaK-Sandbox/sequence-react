@@ -1,5 +1,16 @@
 .Lobby {
+  color: var(--accent-color);
   padding: calc(3 * var(--default-padding));
   margin-bottom: var(--default-margin);
-  background-color: rgb(129, 142, 152);
+  background-color: var(--secondary-color);
+  border-radius: calc(2 * var(--default-border-radius));
+}
+
+ul {
+  list-style-type: none;
+  list-style-position: inside;
+}
+
+ul li {
+  padding-left: 1em;
 }

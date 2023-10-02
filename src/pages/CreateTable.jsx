@@ -5,6 +5,7 @@ import "./CreateTable.css";
 import { createMatch, startMatch } from "../communications";
 import { useEffect } from "react";
 import ReadyButton from "../Component/ReadyButton";
+import BackToMainMenu from "../Component/BackToMainMenu";
 
 export default function CreateTable() {
   const { wsTable, socket, isConnected } = useOutletContext();
@@ -25,7 +26,7 @@ export default function CreateTable() {
 
   return (
     <div className="create-table">
-      <Link to="/">🡸 Go back to Main Menu</Link>
+      <BackToMainMenu />
 
       {/* Wait for the match to be created on the backend and render when it's available  */}
       {Object.keys(wsTable).length ? (
