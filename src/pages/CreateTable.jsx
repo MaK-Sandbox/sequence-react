@@ -1,5 +1,4 @@
-// import { useState } from "react";
-import { Link, useOutletContext, useNavigate } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import Lobby from "../Component/Lobby";
 import "./CreateTable.css";
 import { createMatch, startMatch } from "../communications";

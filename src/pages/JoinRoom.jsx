@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Link, useOutletContext, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useOutletContext, useParams } from "react-router-dom";
 import { joinTable } from "../communications";
 import SetUsername from "../Component/SetUsername";
 import ReadyButton from "../Component/ReadyButton";
