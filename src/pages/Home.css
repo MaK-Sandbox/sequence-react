@@ -27,6 +27,8 @@
 
   color: var(--background-color);
   text-decoration: none;
+
+  cursor: pointer;
 }
 
 .join-input,
