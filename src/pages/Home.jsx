@@ -12,7 +12,7 @@ export default function Home() {
         This is a free online version of the popular tabletop game Sequence. You
         are now in the main menu. On this page you can choose a player name for
         yourself. Next, you can choose to either start a new match or join an
-        existing one assuming you have know its match id.
+        existing one assuming you know its match id.
       </p>
       <SetUsername />
       <span className="create-table-container">
