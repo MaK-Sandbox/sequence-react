@@ -5,15 +5,35 @@ import SetUsername from "../Component/SetUsername";
 export default function Home() {
   return (
     <div className="home-page">
+      <h1>Welcome to Sequence Online</h1>
+      <p>
+        Hello and welcome to this free online version of the tabletop game
+        Sequence. You are now in the main menu from where you can enter a name
+        which you want to go by in-game. Next, you can choose to either start a
+        new match or join an existing one assuming you have already been
+        informed of its match id.
+      </p>
       <SetUsername />
       <span className="create-table-container">
-        <h2>Create new table</h2>
-        <Link to="/matches/create">Create table</Link>
+        <h2>Create a new match</h2>
+        <Link className="link" to="/matches/create">
+          New match
+        </Link>
       </span>
       <span className="join-table-container">
-        <h2>Join table</h2>
-        <input type="text" placeholder="table id" />
-        <Link to="/matches/join">Join</Link>
+        <h2>Join a game</h2>
+        <div className="flex-container">
+          <input
+            className="join-input"
+            type="text"
+            placeholder="Type in match id..."
+            maxLength="20"
+            minLength="1"
+          />
+          <Link className="link" to="/matches/join">
+            Join match
+          </Link>
+        </div>
       </span>
     </div>
   );

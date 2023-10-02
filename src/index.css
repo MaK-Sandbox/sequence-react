@@ -7,9 +7,6 @@
 }
 
 :root {
-  font-family: "Segoe UI Emoji", sans-serif;
-  font-size: 1.5em;
-
   /* color-scheme: light dark; */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -18,6 +15,8 @@
   -webkit-text-size-adjust: 100%;
 
   /* Custom variablse */
+  --font-family: "Segoe UI Emoji", sans-serif;
+  --default-font-size: 1.5em;
   --default-padding: calc(1em / 3);
   --default-margin: 0.75em;
   --default-border-radius: 0.25em;
@@ -37,6 +36,9 @@
   --card-border: 0.02em solid black;
   --card-border-radius: 0.15em;
   --card-color: #ffffff;
+
+  font-family: var(--font-family);
+  font-size: var(--default-font-size);
 }
 
 html,
@@ -44,4 +46,10 @@ body,
 #root {
   min-height: 100vh;
   background-color: var(--background-color);
+}
+
+input[type="text"],
+input[type="text"]:focus {
+  font-size: inherit;
+  font-family: inherit;
 }

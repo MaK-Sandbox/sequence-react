@@ -1,9 +1,45 @@
 .home-page {
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   padding: calc(6 * var(--default-padding));
   border-radius: var(--default-border-radius);
+  color: var(--text-color);
 
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.join-input,
+.join-input:focus {
+  padding: 0.420625em 0.5em;
+  margin: 0.75em 0;
+
+  color: var(--accent-color);
+  border: none;
+  outline: none;
+}
+
+.link {
+  display: inline-block;
+  padding: calc(1.25 * var(--default-padding)) calc(4 * var(--default-padding));
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  text-decoration: none;
+}
+
+.join-input,
+.join-input:focus,
+.link {
+  border-radius: calc(2 * var(--default-border-radius));
+}
+
+.create-table-container,
+.join-table-container {
+  margin: var(--default-margin) 0;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  column-gap: var(--default-margin);
 }
