@@ -3,7 +3,7 @@
 }
 
 .hello-player {
-  color: green;
+  color: var(--primary-color-darker);
   font-size: 0.75em;
 }
 
