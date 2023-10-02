@@ -14,18 +14,22 @@ export default function SetUsername() {
       )}
       <span className={style["set-name-container"]}>
         <h2>Choose a name</h2>
-        <input
-          type="text"
-          placeholder="name"
-          onChange={(event) => setTempName(event.target.value)}
-        />
-        <button
-          onClick={() => {
-            updateUsername(tempName);
-          }}
-        >
-          SAVE
-        </button>
+        <div className="flex-container">
+          <input
+            type="text"
+            placeholder="Choose a name..."
+            maxLength="20"
+            minLength="1"
+            onChange={(event) => setTempName(event.target.value)}
+          />
+          <button
+            onClick={() => {
+              updateUsername(tempName);
+            }}
+          >
+            Save
+          </button>
+        </div>
       </span>
     </div>
   );
