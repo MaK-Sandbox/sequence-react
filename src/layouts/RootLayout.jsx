@@ -87,6 +87,7 @@ export default function RootLayout() {
             wsTable,
             setWsTable,
             socket,
+            isConnected,
           }}
         />
       ) : (
