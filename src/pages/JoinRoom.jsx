@@ -20,19 +20,26 @@ export default function JoinTable() {
       <Link className="back-to-main-menu" to="/">
         🡸 Go back to Main Menu
       </Link>
-      <div className="welcome-message">
-        <h2>Welcome to Sequence Online</h2>
-        <p>You have been invited to join a Sequence Online game.</p>
-        <p>In the section below, you can set a player name.</p>
-        <p>
-          When you are ready to play, press the <q>Ready?</q> button and wait
-          for the other players.
-        </p>
-        <p>Good luck!</p>
-      </div>
-      <SetUsername />
-      <Lobby players={wsTable?.players} />
-      <ReadyButton />
+
+      {Object.keys(wsTable).length ? (
+        <>
+          <div className="welcome-message">
+            <h2>Welcome to Sequence Online</h2>
+            <p>You have been invited to join a Sequence Online game.</p>
+            <p>In the section below, you can set a player name.</p>
+            <p>
+              When you are ready to play, press the <q>Ready?</q> button and
+              wait for the other players.
+            </p>
+            <p>Good luck!</p>
+          </div>
+          <SetUsername />
+          <Lobby teams={wsTable?.teams} />
+          <ReadyButton />
+        </>
+      ) : (
+        "Loading table..."
+      )}
     </div>
   );
 }
