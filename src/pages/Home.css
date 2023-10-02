@@ -22,6 +22,11 @@
   cursor: pointer;
 }
 
+a {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
 .create-table-container,
 .join-table-container {
   margin: var(--default-margin) 0;

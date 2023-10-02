@@ -9,10 +9,18 @@ export default function Home() {
         Welcome to <em>Sequence Online</em>
       </h1>
       <p>
-        This is a free online version of the popular tabletop game Sequence. You
-        are now in the main menu. On this page you can choose a player name for
-        yourself. Next, you can choose to either start a new match or join an
-        existing one assuming you know its match id.
+        This is a free online version of the popular tabletop game{" "}
+        <a
+          href="https://en.wikipedia.org/wiki/Sequence_(game)"
+          target="_blank"
+          rel="noreferrer"
+          alt="Link to Wikipedia page about Sequence"
+        >
+          Sequence
+        </a>
+        . You are now in the main menu. On this page you can choose a player
+        name for yourself. Next, you can choose to either start a new match or
+        join an existing one assuming you know its match id.
       </p>
       <SetUsername />
       <span className="create-table-container">
