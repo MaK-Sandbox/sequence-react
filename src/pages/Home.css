@@ -9,32 +9,17 @@
   justify-content: center;
 }
 
-.join-input,
-.join-input:focus {
-  padding: 0.420625em 0.5em;
-  margin: 0.75em 0;
-
-  color: var(--accent-color);
-  border: none;
-  outline: none;
-}
-
 .link {
   display: inline-block;
   padding: calc(1.25 * var(--default-padding)) calc(4 * var(--default-padding));
   margin: calc(0.5 * var(--default-margin)) 0;
   background-color: var(--primary-color);
+  border-radius: calc(2 * var(--default-border-radius));
 
   color: var(--background-color);
   text-decoration: none;
 
   cursor: pointer;
-}
-
-.join-input,
-.join-input:focus,
-.link {
-  border-radius: calc(2 * var(--default-border-radius));
 }
 
 .create-table-container,

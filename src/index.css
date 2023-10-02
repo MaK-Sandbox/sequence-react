@@ -52,4 +52,12 @@ input[type="text"],
 input[type="text"]:focus {
   font-size: inherit;
   font-family: inherit;
+
+  padding: 0.420625em 0.5em;
+  margin: 0.5em 0;
+  border-radius: calc(2 * var(--default-border-radius));
+
+  color: var(--accent-color);
+  border: none;
+  outline: none;
 }
