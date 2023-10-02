@@ -9,6 +9,10 @@
   justify-content: center;
 }
 
+p {
+  max-width: 60ch;
+}
+
 .link {
   display: inline-block;
   padding: calc(1.25 * var(--default-padding)) calc(4 * var(--default-padding));
