@@ -5,13 +5,14 @@ import SetUsername from "../Component/SetUsername";
 export default function Home() {
   return (
     <div className="home-page">
-      <h1>Welcome to Sequence Online</h1>
+      <h1>
+        Welcome to <em>Sequence Online</em>
+      </h1>
       <p>
-        Hello and welcome to this free online version of the tabletop game
-        Sequence. You are now in the main menu from where you can enter a name
-        which you want to go by in-game. Next, you can choose to either start a
-        new match or join an existing one assuming you have already been
-        informed of its match id.
+        This is a free online version of the popular tabletop game Sequence. You
+        are now in the main menu. On this page you can choose a player name for
+        yourself. Next, you can choose to either start a new match or join an
+        existing one assuming you have know its match id.
       </p>
       <SetUsername />
       <span className="create-table-container">
