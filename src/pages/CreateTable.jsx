@@ -30,7 +30,7 @@ export default function CreateTable() {
         ) : null}
       </div>
       <div>
-        <Lobby players={wsTable?.players} />
+        <Lobby teams={wsTable?.teams} />
       </div>
     </div>
   );
