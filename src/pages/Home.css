@@ -22,7 +22,9 @@
 .link {
   display: inline-block;
   padding: calc(1.25 * var(--default-padding)) calc(4 * var(--default-padding));
+  margin: calc(0.5 * var(--default-margin)) 0;
   background-color: var(--primary-color);
+
   color: var(--background-color);
   text-decoration: none;
 }
