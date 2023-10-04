@@ -1,16 +1,16 @@
 .Lobby {
   color: var(--secondary-color);
   padding: calc(3 * var(--default-padding));
-  margin-bottom: var(--default-margin);
   background-color: var(--primary-color);
   border-radius: calc(2 * var(--default-border-radius));
 }
 
-ul {
-  list-style-type: none;
-  list-style-position: inside;
+.grid-container {
+  display: grid;
+  grid-template-columns: 10vw auto 10vw;
+  gap: var(--default-margin);
 }
 
-ul li {
-  padding-left: 1em;
+.grid-header {
+  font-weight: 600;
 }
