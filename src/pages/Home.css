@@ -9,8 +9,13 @@
   justify-content: center;
 }
 
+h1 {
+  margin-bottom: calc(0.4 * var(--default-margin));
+}
+
 p {
   max-width: 60ch;
+  line-height: 2.75vh;
 }
 
 .link {
