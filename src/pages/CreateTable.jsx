@@ -56,5 +56,5 @@ function copyURL(matchId) {
   const url = `http://localhost:5173/matches/join/${matchId}`;
   navigator.clipboard.writeText(url);
 
-  alert("Copied the text: " + url);
+  // alert("Copied the text: " + url);
 }
