@@ -2,9 +2,20 @@
   margin: var(--default-margin) 0;
 }
 
+.hidden,
 .hello-player {
+  margin-top: var(--default-margin);
+  height: 2.5vh;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.hello-player {
+  visibility: visible;
+
   color: var(--primary-color-darker);
-  font-size: 0.75em;
 }
 
 button {
