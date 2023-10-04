@@ -16,6 +16,7 @@
   visibility: visible;
 
   color: var(--primary-color-darker);
+  font-style: italic;
 }
 
 button {
