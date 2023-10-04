@@ -15,13 +15,27 @@
   column-gap: var(--default-margin);
 }
 
-.start, .share {
+.start,
+.share {
   background-color: var(--secondary-color);
   border: 0.05em solid var(--accent-color);
   color: var(--accent-color);
 }
 
+.start {
+  cursor: default;
+  pointer-events: none;
+}
+
 .start-allready {
   background-color: var(--accent-color);
   color: var(--secondary-color);
+
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.share:hover {
+  border-color: var(--secondary-color);
+  text-decoration: underline;
 }

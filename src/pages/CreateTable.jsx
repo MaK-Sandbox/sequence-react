@@ -41,7 +41,11 @@ export default function CreateTable() {
                 >
                   Start match
                 </button>
-                <button className="share" onClick={() => copyURL(wsTable.id)}>
+                <button
+                  className="share"
+                  onClick={() => copyURL(wsTable.id)}
+                  title="Copy match URL to clipboard"
+                >
                   Copy match URL
                 </button>
               </>
