@@ -15,7 +15,7 @@
   -webkit-text-size-adjust: 100%;
 
   /* Custom variablse */
-  --font-family: "Segoe UI Emoji", sans-serif;
+  --font-family: sans-serif;
   --default-font-size: 1.5em;
   --default-padding: calc(1em / 3);
   --default-margin: 0.75em;

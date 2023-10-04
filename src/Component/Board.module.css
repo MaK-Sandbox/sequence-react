@@ -22,6 +22,7 @@
 
 .Cell > *,
 .Cell {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
   background-color: var(--card-color);
 }
 
