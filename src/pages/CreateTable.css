@@ -1,6 +1,6 @@
 .create-table {
   padding: calc(6 * var(--default-padding));
-  background-color: var(--primary-color);
+  background-color: var(--secondary-color);
   border-radius: var(--default-border-radius);
 
   display: flex;
@@ -16,9 +16,16 @@
   margin: var(--default-margin) 0;
   display: flex;
   justify-content: space-between;
+  column-gap: var(--default-margin);
 }
 
 .flex > * {
   min-width: 8em;
   padding: calc(1.75 * var(--default-padding));
+}
+
+.start, .share {
+  background-color: var(--secondary-color);
+  border: 0.05em solid var(--accent-color);
+  color: var(--accent-color);
 }

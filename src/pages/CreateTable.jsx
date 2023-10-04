@@ -34,8 +34,8 @@ export default function CreateTable() {
             <ReadyButton />
             {socket.id === wsTable.admin ? (
               <>
-                <button onClick={() => startMatch()}>Start match</button>
-                <button onClick={() => copyURL(wsTable.id)}>
+                <button className="start" onClick={() => startMatch()}>Start match</button>
+                <button className="share" onClick={() => copyURL(wsTable.id)}>
                   Copy match URL
                 </button>
               </>

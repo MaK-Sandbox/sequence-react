@@ -1,3 +1,4 @@
 .ready-btn {
-  padding: calc(1.5 * var(--default-padding));
+  background-color: var(--accent-color);
+  color: var(--secondary-color)
 }

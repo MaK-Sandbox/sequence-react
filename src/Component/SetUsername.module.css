@@ -19,18 +19,7 @@
   font-style: italic;
 }
 
-button {
-  font-size: var(--font-size);
-
-  padding: calc(1.5 * var(--default-padding)) calc(4 * var(--default-padding));
-  margin: calc(0.5 * var(--default-margin)) 0;
+.save {
   background-color: var(--primary-color);
-
-  border: none;
-  border-radius: calc(2 * var(--default-border-radius));
-
   color: var(--background-color);
-  text-decoration: none;
-
-  cursor: pointer;
 }

@@ -23,7 +23,7 @@ export default function SetUsername() {
             minLength="1"
             onChange={(event) => setTempName(event.target.value)}
           />
-          <button
+          <button className={style["save"]}
             onClick={() => {
               setIsVisible(true);
               updateUsername(tempName);
