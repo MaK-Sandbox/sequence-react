@@ -63,6 +63,7 @@ input[type="text"]:focus {
 }
 
 button {  
+  min-width: 8em;
   padding: calc(1.5 * var(--default-padding)) calc(4 * var(--default-padding));
   margin: calc(0.5 * var(--default-margin)) 0;
   
