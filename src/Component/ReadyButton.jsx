@@ -1,29 +1,24 @@
+import { useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import { updateReady } from "../communications";
 import style from "./ReadyButton.module.css";
 
 export default function ReadyButton() {
-  const { wsTable, wsReady, socket } = useOutletContext();
+  const { wsReady } = useOutletContext();
+
+  useEffect(() => {
+    console.log(wsReady);
+  }, [wsReady]);
 
   return (
     <button
-      className={style["ready-btn"]}
+      className={wsReady ? style["ready-btn-disabled"] : style["ready-btn"]}
       onClick={(event) => {
-        const readyCopy = !wsReady;
-        updateReady(readyCopy);
-        alternateButtonText(event, readyCopy, socket, wsTable);
+        updateReady(true);
+        if (!wsReady) event.target.innerText = "Waiting...";
       }}
-      disabled={wsReady}
     >
       Ready?
     </button>
   );
-}
-
-function alternateButtonText(event, ready, socket, wsTable) {
-  if (ready && socket.id === wsTable.admin) {
-    event.target.innerText = "Ready!";
-  } else {
-    event.target.innerText = "Ready! Waiting for other players...";
-  }
 }

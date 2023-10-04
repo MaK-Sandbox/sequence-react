@@ -2,3 +2,12 @@
   background-color: var(--accent-color);
   color: var(--secondary-color)
 }
+
+.ready-btn-disabled {
+  background-color: var(--secondary-color);
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+
+  cursor: default;
+  pointer-events: none;
+}
