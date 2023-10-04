@@ -20,3 +20,8 @@
   border: 0.05em solid var(--accent-color);
   color: var(--accent-color);
 }
+
+.start-allready {
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+}
