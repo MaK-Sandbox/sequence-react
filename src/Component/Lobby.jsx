@@ -26,7 +26,7 @@ export default function Lobby({ teams, setIsEveryoneReady }) {
     /**
      * Check if all players in-game are ready to play. If they are, call setIsEveryoneReady and set the value to true
      */
-    if (playerCount === readyCounts) {
+    if (playerCount > 1 && playerCount === readyCounts) {
       setIsEveryoneReady(true);
     }
   }, [teams, setIsEveryoneReady]);
