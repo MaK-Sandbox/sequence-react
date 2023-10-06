@@ -6,23 +6,27 @@ export default function Lobby({ teams, setIsEveryoneReady }) {
     let playerCount = 0;
     let readyCounts = 0;
 
-    console.log("teams", teams);
+    /**
+     * Loop through all teams.
+     * Increment playerCount when a team has players with the amount of players
+     * When said each player has declared themselves as ready to play, increment readyCount by 1
+     */
     teams.forEach((team) => {
       if (team.players.length > 0) {
-        playerCount = playerCount + team.players.length;
+        playerCount += team.players.length;
         team.players.forEach((player) => {
-          if (player.ready) readyCounts = readyCounts + 1;
+          if (player.ready) readyCounts += 1;
         });
       }
     });
 
+    /**
+     * Check if all players in-game are ready to play. If they are, call setIsEveryoneReady and set the value to true
+     */
     if (playerCount === readyCounts) {
       setIsEveryoneReady(true);
-      console.log("Everyone is Ready!");
-    } else {
-      console.log("Not everyone is ready...");
     }
-  }, [teams]);
+  }, [teams, setIsEveryoneReady]);
 
   return (
     <div className={style["Lobby"]}>
