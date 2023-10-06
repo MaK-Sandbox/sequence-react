@@ -35,6 +35,22 @@ export default function Lobby({ teams, setIsEveryoneReady }) {
         <div className={style["grid-header"]}>Team</div>
         <div className={style["grid-header"]}>Username</div>
         <div className={style["grid-header"]}>Ready</div>
+        {teams.map((team) =>
+          team.players.map((player, index) => (
+            <>
+              <div key={index * 10 + 1} data-playerid={player.id}>
+                {team.token}
+              </div>
+              <div key={index * 10 + 2} data-playerid={player.id}>
+                {player.username}
+              </div>
+              <div
+                key={index * 10 + 3}
+                data-playerid={player.id}
+              >{`${player.ready}`}</div>
+            </>
+          ))
+        )}
       </div>
     </div>
   );
