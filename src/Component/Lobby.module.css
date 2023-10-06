@@ -8,9 +8,22 @@
 .grid-container {
   display: grid;
   grid-template-columns: 10vw auto 10vw;
-  gap: var(--default-margin);
 }
 
 .grid-header {
   font-weight: 600;
+}
+
+.highlight,
+.highlight-left-edge,
+.highlight-right-edge {
+  background-color: var(--accent-color);
+}
+
+.highlight-left-edge {
+  border-radius: var(--default-border-radius) 0 0 var(--default-border-radius);
+}
+
+.highlight-right-edge {
+  border-radius: 0 var(--default-border-radius) var(--default-border-radius) 0;
 }
