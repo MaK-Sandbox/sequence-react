@@ -38,37 +38,45 @@ export default function Lobby({ teams, setIsEveryoneReady }) {
         <div className={style["grid-header"]}>Team</div>
         <div className={style["grid-header"]}>Username</div>
         <div className={style["grid-header"]}>Ready</div>
-        {teams.map((team) =>
-          team.players.map((player, index) => (
-            <>
-              <div
-                key={index * 10 + 1}
-                data-playerid={player.id}
-                className={
-                  player.id === socket.id ? style["highlight-left-edge"] : null
-                }
-              >
-                {team.token}
-              </div>
-              <div
-                key={index * 10 + 2}
-                data-playerid={player.id}
-                className={player.id === socket.id ? style["highlight"] : null}
-              >
-                {player.id === socket.id
-                  ? `${player.username} (you)`
-                  : player.username}
-              </div>
-              <div
-                key={index * 10 + 3}
-                data-playerid={player.id}
-                className={
-                  player.id === socket.id ? style["highlight-right-edge"] : null
-                }
-              >{`${player.ready}`}</div>
-            </>
-          ))
-        )}
+        {teams.map((team) => {
+          return team.players.length > 0
+            ? team.players.map((player, index) => {
+                return [
+                  <div
+                    key={index * 10}
+                    data-playerid={player.id}
+                    className={
+                      player.id === socket.id
+                        ? style["highlight-left-edge"]
+                        : null
+                    }
+                  >
+                    {team.token}
+                  </div>,
+                  <div
+                    key={index * 10 + 1}
+                    data-playerid={player.id}
+                    className={
+                      player.id === socket.id ? style["highlight"] : null
+                    }
+                  >
+                    {player.id === socket.id
+                      ? `${player.username} (You)`
+                      : player.username}
+                  </div>,
+                  <div
+                    key={index * 10 + 2}
+                    data-playerid={player.id}
+                    className={
+                      player.id === socket.id
+                        ? style["highlight-right-edge"]
+                        : null
+                    }
+                  >{`${player.ready}`}</div>,
+                ];
+              })
+            : null;
+        })}
       </div>
     </div>
   );
