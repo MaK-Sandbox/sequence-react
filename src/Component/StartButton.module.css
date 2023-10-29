@@ -1,0 +1,16 @@
+.start-inactive {
+  background-color: var(--secondary-color);
+  border: 0.05em solid var(--accent-color);
+  color: var(--accent-color);
+
+  cursor: default;
+  pointer-events: none;
+}
+
+.start-active {
+  background-color: var(--accent-color);
+  color: var(--secondary-color);
+
+  cursor: pointer;
+  pointer-events: auto;
+}

@@ -1,15 +1,20 @@
 import { useOutletContext, useNavigate } from "react-router-dom";
 import Lobby from "../Component/Lobby";
 import "./CreateTable.css";
-import { createMatch, startMatch } from "../communications";
+import { createMatch } from "../communications";
 import { useEffect, useState } from "react";
 import ReadyButton from "../Component/ReadyButton";
+import StartButton from "../Component/StartButton";
 import BackToMainMenu from "../Component/BackToMainMenu";
 
 export default function CreateTable() {
   const [isEveryoneReady, setIsEveryoneReady] = useState(false);
   const { wsTable, socket, isConnected } = useOutletContext();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log("isEveryoneReady:", isEveryoneReady);
+  }, [isEveryoneReady]);
 
   useEffect(() => {
     // once we're connected, create match
@@ -24,6 +29,29 @@ export default function CreateTable() {
     }
   }, [wsTable, navigate]);
 
+  useEffect(() => {
+    const teams = wsTable.teams;
+    let playerCount = 0;
+    let readyCount = 0;
+
+    if (!teams || !Array.isArray(teams)) {
+      return;
+    }
+
+    teams.forEach((team) => {
+      if (team.players.length > 0) {
+        playerCount = playerCount + team.players.length;
+        team.players.forEach((player) => {
+          if (player.ready) readyCount++;
+        });
+      }
+    });
+
+    if (playerCount === readyCount && playerCount > 1) {
+      setIsEveryoneReady(true);
+    }
+  }, [wsTable]);
+
   return (
     <div className="create-table">
       <BackToMainMenu />
@@ -35,12 +63,7 @@ export default function CreateTable() {
             <ReadyButton />
             {socket.id === wsTable.admin ? (
               <>
-                <button
-                  className={isEveryoneReady ? "start-allready" : "start"}
-                  onClick={() => startMatch()}
-                >
-                  Start match
-                </button>
+                <StartButton isEveryoneReady={isEveryoneReady} />
                 <button
                   className="share"
                   onClick={() => copyURL(wsTable.id)}
