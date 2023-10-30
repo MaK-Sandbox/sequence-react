@@ -15,7 +15,7 @@ export default function SetUsername() {
       >{`Hello ${username}`}</p>
       <span className={style["set-name-container"]}>
         <h2>Choose a name</h2>
-        <div className="flex-container">
+        <div className={style["flex-container"]}>
           <input
             type="text"
             placeholder="Choose a name..."
@@ -23,7 +23,8 @@ export default function SetUsername() {
             minLength="1"
             onChange={(event) => setTempName(event.target.value)}
           />
-          <button className={style["save"]}
+          <button
+            className={style["save"]}
             onClick={() => {
               setIsVisible(true);
               updateUsername(tempName);
