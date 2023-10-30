@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import "./Home.css";
 import SetUsername from "../Component/SetUsername";
+import style from "./Home.module.css";
 
 export default function Home() {
   const [tempMatchId, setTempMatchId] = useState("");
 
   return (
-    <div className="home-page">
+    <div className={style["home-page"]}>
       <h1>
         Welcome to <em>Sequence Online</em>
       </h1>
@@ -26,24 +26,24 @@ export default function Home() {
         join an existing one assuming you know its match id.
       </p>
       <SetUsername />
-      <span className="create-table-container">
+      <span className={style["create-table-container"]}>
         <h2>Create a new match</h2>
-        <Link className="link" to="/matches/create">
+        <Link className={style["link"]} to="/matches/create">
           New match
         </Link>
       </span>
-      <span className="join-table-container">
+      <span className={style["join-table-container"]}>
         <h2>Join a game</h2>
-        <div className="flex-container">
+        <div className={style["flex-container"]}>
           <input
-            className="join-input"
+            className={style["join-input"]}
             type="text"
             placeholder="Type in match id..."
             maxLength="20"
             minLength="1"
             onChange={(event) => setTempMatchId(event.target.value)}
           />
-          <Link className="link" to={`/matches/join/${tempMatchId}`}>
+          <Link className={style["link"]} to={`/matches/join/${tempMatchId}`}>
             Join match
           </Link>
         </div>
