@@ -1,11 +1,11 @@
 import { useOutletContext, useNavigate } from "react-router-dom";
 import Lobby from "../Component/Lobby";
-import "./CreateTable.css";
 import { createMatch } from "../communications";
 import { useEffect, useState } from "react";
 import ReadyButton from "../Component/ReadyButton";
 import StartButton from "../Component/StartButton";
 import BackToMainMenu from "../Component/BackToMainMenu";
+import style from "./CreateTable.module.css";
 
 export default function CreateTable() {
   const [isEveryoneReady, setIsEveryoneReady] = useState(false);
@@ -53,19 +53,19 @@ export default function CreateTable() {
   }, [wsTable]);
 
   return (
-    <div className="create-table">
+    <div className={style["create-table"]}>
       <BackToMainMenu />
 
       {/* Wait for the match to be created on the backend and render when it's available  */}
       {Object.keys(wsTable).length ? (
         <>
-          <div className="flex">
+          <div className={style["flex"]}>
             <ReadyButton />
             {socket.id === wsTable.admin ? (
               <>
                 <StartButton isEveryoneReady={isEveryoneReady} />
                 <button
-                  className="share"
+                  className={style["share"]}
                   onClick={() => copyURL(wsTable.id)}
                   title="Copy match URL to clipboard"
                 >
