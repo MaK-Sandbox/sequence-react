@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useOutletContext, useParams } from "react-router-dom";
 import { joinTable } from "../communications";
-import SetUsername from "../Component/SetUsername";
+// import SetUsername from "../Component/SetUsername";
 import ReadyButton from "../Component/ReadyButton";
 import Lobby from "../Component/Lobby";
-import "./JoinRoom.css";
 import BackToMainMenu from "../Component/BackToMainMenu";
+import style from "./JoinRoom.module.css";
 
 export default function JoinTable() {
   const { tableId } = useParams();
@@ -17,12 +17,12 @@ export default function JoinTable() {
   }, [tableId]);
 
   return (
-    <div className="join-table">
+    <div className={style["join-table"]}>
       <BackToMainMenu />
 
       {Object.keys(wsTable).length ? (
         <>
-          <div className="welcome-message">
+          <div className={style["welcome-message"]}>
             <h2>Welcome to Sequence Online</h2>
             <p>You have been invited to join a Sequence Online game.</p>
             <p>In the section below, you can set a player name.</p>
@@ -32,7 +32,7 @@ export default function JoinTable() {
             </p>
             <p>Good luck!</p>
           </div>
-          <SetUsername />
+          {/* <SetUsername /> */}
           <Lobby teams={wsTable?.teams} />
           <ReadyButton />
         </>
