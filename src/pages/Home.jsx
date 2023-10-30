@@ -1,8 +1,11 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./Home.css";
 import SetUsername from "../Component/SetUsername";
 
 export default function Home() {
+  const [tempMatchId, setTempMatchId] = useState("");
+
   return (
     <div className="home-page">
       <h1>
@@ -38,8 +41,9 @@ export default function Home() {
             placeholder="Type in match id..."
             maxLength="20"
             minLength="1"
+            onChange={(event) => setTempMatchId(event.target.value)}
           />
-          <Link className="link" to="/matches/join">
+          <Link className="link" to={`/matches/join/${tempMatchId}`}>
             Join match
           </Link>
         </div>
