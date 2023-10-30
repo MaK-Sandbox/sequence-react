@@ -2,11 +2,14 @@ import style from "./Lobby.module.css";
 import { useOutletContext } from "react-router-dom";
 
 export default function Lobby({ teams }) {
-  const { socket } = useOutletContext();
+  const { socket, wsTable } = useOutletContext();
 
   return (
     <div className={style["Lobby"]}>
-      <h2>Connected players</h2>
+      <div className="flex-container">
+        <h2>Connected players</h2>
+        <h3>{`Match-Id: ${wsTable.id}`}</h3>
+      </div>
       <div className={style["grid-container"]}>
         <div className={style["grid-header"]}>Team</div>
         <div className={style["grid-header"]}>Username</div>
