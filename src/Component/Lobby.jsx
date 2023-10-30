@@ -6,7 +6,7 @@ export default function Lobby({ teams }) {
 
   return (
     <div className={style["Lobby"]}>
-      <div className="flex-container">
+      <div className={style["flex-container"]}>
         <h2>Connected players</h2>
         <h3>{`Match-Id: ${wsTable.id}`}</h3>
       </div>
