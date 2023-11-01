@@ -16,7 +16,7 @@
 
   /* Custom variablse */
   --font-family: sans-serif;
-  --default-font-size: clamp(0.95em, 3.35vw, 1.5em);
+  --default-font-size: clamp(0.95em, 3.35vw, 1.4em);
   --default-padding: calc(1em / 3);
   --default-margin: 0.75em;
   --default-border-radius: 0.25em;
