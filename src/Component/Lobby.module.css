@@ -1,7 +1,8 @@
 .Lobby {
+  background-color: var(--primary-color);
   color: var(--secondary-color);
   padding: calc(3 * var(--default-padding));
-  background-color: var(--primary-color);
+  margin-bottom: var(--default-margin);
   border-radius: calc(2 * var(--default-border-radius));
 }
 
