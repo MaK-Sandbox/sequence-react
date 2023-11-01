@@ -7,14 +7,18 @@
 
 .flex-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   justify-content: space-between;
   align-items: center;
 }
 
+h2 {
+  font-size: var(--default-h2-font-size);
+}
+
 h3 {
-  font-size: 0.85em;
+  font-size: var(--default-h3-font-size);
   color: var(--background-color);
 }
 
