@@ -59,7 +59,7 @@ export default function CreateTable() {
       {/* Wait for the match to be created on the backend and render when it's available  */}
       {Object.keys(wsTable).length ? (
         <>
-          <div className={style["flex"]}>
+          <div className={style["button-container"]}>
             <ReadyButton />
             {socket.id === wsTable.admin ? (
               <>

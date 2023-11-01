@@ -8,11 +8,12 @@
   justify-content: center;
 }
 
-.flex {
+.button-container {
   margin: var(--default-margin) 0;
+
   display: flex;
   justify-content: space-between;
-  column-gap: var(--default-margin);
+  gap: var(--default-margin);
 }
 
 .share {
@@ -24,4 +25,10 @@
 .share:hover {
   border-color: var(--secondary-color);
   text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+  .button-container {
+    flex-direction: column;
+  }
 }
