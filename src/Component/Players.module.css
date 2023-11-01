@@ -1,5 +1,5 @@
 .Players {
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   padding: var(--default-padding);
   margin: var(--default-margin);
   border-radius: var(--default-border-radius);

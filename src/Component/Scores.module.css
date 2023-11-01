@@ -2,7 +2,7 @@
   grid-column: 1;
   grid-row: 1;
 
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   padding: var(--default-padding);
   margin: var(--default-margin);
   border-radius: var(--default-border-radius);
@@ -13,8 +13,16 @@
   padding-bottom: calc(var(--default-padding) / 2);
 }
 
-.Current-scores {
+.Two-teams,
+.Three-teams {
   display: grid;
+}
+
+.Two-teams {
+  grid-template-columns: repeat(2, auto);
+}
+
+.Three-teams {
   grid-template-columns: repeat(3, auto);
 }
 
