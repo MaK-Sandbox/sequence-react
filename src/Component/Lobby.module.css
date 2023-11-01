@@ -19,8 +19,9 @@ h3 {
 }
 
 .grid-container {
+  margin-top: var(--default-margin);
   display: grid;
-  grid-template-columns: 10vw auto 10vw;
+  grid-template-columns: 20% auto 20%;
 }
 
 .grid-header {
