@@ -17,8 +17,8 @@
   /* Custom variablse */
   --font-family: sans-serif;
   --default-font-size: clamp(0.85em, 2vw, 1.2em);
-  --default-h2-font-size: clamp(1.2em, 4vw, 1.4em);
-  --default-h3-font-size: clamp(1em, 3vw, 1.3em);
+  --default-h2-font-size: clamp(1.2em, 4vw, 1.5em);
+  --default-h3-font-size: clamp(1em, 3vw, 1.25em);
 
   --default-padding: calc(1em / 3);
   --default-margin: 0.75em;
