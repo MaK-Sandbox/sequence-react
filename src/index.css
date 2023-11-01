@@ -16,7 +16,7 @@
 
   /* Custom variablse */
   --font-family: sans-serif;
-  --default-font-size: 1.5em;
+  --default-font-size: clamp(0.95em, 3.35vw, 1.5em);
   --default-padding: calc(1em / 3);
   --default-margin: 0.75em;
   --default-border-radius: 0.25em;
@@ -62,14 +62,14 @@ input[type="text"]:focus {
   outline: none;
 }
 
-button {  
+button {
   min-width: 8em;
   padding: calc(1.5 * var(--default-padding)) calc(4 * var(--default-padding));
   margin: calc(0.5 * var(--default-margin)) 0;
-  
+
   border: none;
   border-radius: calc(2 * var(--default-border-radius));
-  
+
   font-size: var(--font-size);
   text-decoration: none;
   cursor: pointer;
