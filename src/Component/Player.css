@@ -16,3 +16,12 @@
   border: 0.15em solid green;
   border-radius: 0.25em;
 }
+
+.Player_name,
+.Player_token {
+  text-align: center;
+}
+
+.Player_name {
+  font-size: calc(0.75 * var(--default-font-size));
+}

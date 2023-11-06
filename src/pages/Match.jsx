@@ -12,7 +12,7 @@ export default function Match() {
 
   return (
     <div className={style["game-view"]}>
-      <Players players={match.players} />
+      <Players teams={match.teams} />
       <Scores teams={match.teams} />
       <Board board={match.board} />
       {/* <Piles drawCard={drawCard} /> */}

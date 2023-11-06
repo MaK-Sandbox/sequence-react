@@ -1,21 +1,28 @@
+import { useOutletContext } from "react-router-dom";
 import Player from "./Player";
 import style from "./Players.module.css";
 
-export default function Players({ players }) {
+export default function Players({ teams }) {
+  const { wsTable } = useOutletContext();
+
   return (
     <div className={style["Players"]}>
       <h2>Players</h2>
-      {players?.length > 0
-        ? players.map((player, index) => {
-            return (
-              <Player
-                key={index}
-                name={player.username}
-                // token={player.token}
-                // startedCurrentRound={player.startedCurrentRound}
-                // isActivePlayer={player.isActivePlayer}
-              />
-            );
+      {teams?.length > 1
+        ? teams.map((team, i) => {
+            return team.players.map((player, j) => {
+              return (
+                <Player
+                  key={i * 10 + j}
+                  name={player.username}
+                  token={team.token}
+                  startedCurrentRound={
+                    player.id === wsTable.turnOrder[0] ? true : false
+                  }
+                  isActivePlayer={player.isActivePlayer}
+                />
+              );
+            });
           })
         : null}
     </div>
