@@ -1,11 +1,10 @@
 import "./Player.css";
 
-export default function Player(props) {
-  const { name, token, startedCurrentRound, isActivePlayer } = props;
+export default function Player({ name, token, isAdmin }) {
   return (
-    <div className={isActivePlayer ? "Player Active" : "Player"}>
+    <div className="Player">
       <span className="Player_beginner_status" title="I started this round!">
-        {startedCurrentRound ? "🔰" : null}
+        {isAdmin ? "🔰" : null}
       </span>
       <span className="Player_name">{name}</span>
       <span className="Player_token">{token}</span>
