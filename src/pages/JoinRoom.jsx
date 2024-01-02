@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useOutletContext, useParams } from "react-router-dom";
+import { useOutletContext, useParams, useNavigate } from "react-router-dom";
 import { joinTable } from "../communications";
 // import SetUsername from "../Component/SetUsername";
 import ReadyButton from "../Component/ReadyButton";
@@ -10,11 +10,18 @@ import style from "./JoinRoom.module.css";
 export default function JoinTable() {
   const { tableId } = useParams();
   const { wsTable } = useOutletContext();
+  const navigate = useNavigate();
 
   useEffect(() => {
     joinTable(tableId);
     // console.log(wsTable);
   }, [tableId]);
+
+  useEffect(() => {
+    if (wsTable.started) {
+      navigate("/matches/match");
+    }
+  }, [wsTable, navigate]);
 
   return (
     <div className={style["join-table"]}>
