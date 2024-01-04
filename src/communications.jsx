@@ -30,3 +30,8 @@ export function startMatch() {
   console.log("Sending start game state to backend...");
   sendToServer("startMatch");
 }
+
+export function drawCard() {
+  console.log("Draw card from the backend...");
+  sendToServer("drawCard");
+}
