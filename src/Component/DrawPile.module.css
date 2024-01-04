@@ -1,0 +1,38 @@
+.drawPile {
+  background-color: beige;
+}
+
+.cell {
+  border: var(--card-border);
+  border-radius: var(--card-border-radius);
+
+  height: var(--card-height);
+  width: var(--card-width);
+  aspect-ratio: var(--card-aspect-ratio);
+
+  margin: 0.1em;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25em 0;
+}
+
+.face,
+.cell {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
+  background-color: var(--card-color);
+}
+
+.cell:hover > *,
+.cell:hover {
+  background-color: bisque;
+}
+
+.cell.highlighted {
+  border: 5px solid green;
+}
+
+.face {
+  text-align: start;
+}

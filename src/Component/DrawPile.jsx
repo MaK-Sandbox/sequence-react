@@ -1,12 +1,11 @@
-export default function DrawPile({ drawCard }) {
+import style from "./DrawPile.module.css";
+
+export default function DrawPile() {
   return (
-    <div
-      onClick={() => {
-        const card = drawCard();
-        console.log(card);
-      }}
-    >
-      DRAW
+    <div className={style.drawPile}>
+      <div className={style.cell}>
+        <div className={style.face}>♠️Q</div>
+      </div>
     </div>
   );
 }
