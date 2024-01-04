@@ -20,14 +20,11 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
+  /* Ensure that the image used for the backside of the card deck fill out as much of the component as possible*/
+  object-fit: fill;
 }
 
 .cell.highlighted {
   border: 5px solid green;
-}
-
-.backsideOfCard {
-  width: inherit;
-  height: inherit;
-  object-fit: fill;
 }
