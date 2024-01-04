@@ -4,7 +4,7 @@ import DrawPile from "./DrawPile";
 
 export default function Piles({ drawCard }) {
   return (
-    <div className={style["Piles"]}>
+    <div className={style.Piles}>
       <DiscardPile />
       <DrawPile drawCard={drawCard} />
     </div>
