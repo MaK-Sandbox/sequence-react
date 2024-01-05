@@ -9,6 +9,7 @@ export default function RootLayout() {
   const [username, setUsername] = useState("");
   const [wsReady, setWsReady] = useState(false);
   const [wsTable, setWsTable] = useState({});
+  const [card, setCard] = useState("");
 
   useEffect(() => {
     function onConnect() {
@@ -49,6 +50,11 @@ export default function RootLayout() {
       setWsTable(table);
     }
 
+    function onDrawCard(card) {
+      console.log(card);
+      setCard(card);
+    }
+
     function onError(err) {
       console.log(err);
     }
@@ -61,6 +67,7 @@ export default function RootLayout() {
     socket.on("createMatch", onCreateMatch);
     socket.on("startMatch", onStartMatch);
     socket.on("table", onTable);
+    socket.on("drawCard", onDrawCard);
     socket.on("error", onError);
 
     return () => {
@@ -72,6 +79,7 @@ export default function RootLayout() {
       socket.off("createMatch", onCreateMatch);
       socket.off("startMatch", onStartMatch);
       socket.off("table", onTable);
+      socket.off("drawCard", onDrawCard);
       socket.off("error", onError);
     };
   }, [socket]);
@@ -86,6 +94,7 @@ export default function RootLayout() {
             wsReady,
             wsTable,
             setWsTable,
+            card,
             socket,
             isConnected,
           }}
