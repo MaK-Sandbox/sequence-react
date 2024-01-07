@@ -5,9 +5,17 @@ import Piles from "../Component/Piles";
 import Hand from "../Component/Hand";
 import Scores from "../Component/Scores";
 import { useOutletContext } from "react-router-dom";
+import { useEffect } from "react";
+import { dealCards } from "../communications";
 
 export default function Match() {
   const { wsTable: match } = useOutletContext();
+
+  useEffect(() => {
+    if (match.started) {
+      dealCards();
+    }
+  }, [match]);
 
   return (
     <div className={style["game-view"]}>

@@ -9,6 +9,7 @@ export default function RootLayout() {
   const [username, setUsername] = useState("");
   const [wsReady, setWsReady] = useState(false);
   const [wsTable, setWsTable] = useState({});
+  const [hand, setHand] = useState([]);
   const [card, setCard] = useState("");
 
   useEffect(() => {
@@ -50,6 +51,11 @@ export default function RootLayout() {
       setWsTable(table);
     }
 
+    function onDealHand(hand) {
+      console.log(hand);
+      setHand(hand);
+    }
+
     function onDrawCard(card) {
       console.log(card);
       setCard(card);
@@ -67,6 +73,7 @@ export default function RootLayout() {
     socket.on("createMatch", onCreateMatch);
     socket.on("startMatch", onStartMatch);
     socket.on("table", onTable);
+    socket.on("cardsDealt", onDealHand);
     socket.on("drawCard", onDrawCard);
     socket.on("error", onError);
 
@@ -79,6 +86,7 @@ export default function RootLayout() {
       socket.off("createMatch", onCreateMatch);
       socket.off("startMatch", onStartMatch);
       socket.off("table", onTable);
+      socket.off("cardsDealt", onDealHand);
       socket.off("drawCard", onDrawCard);
       socket.off("error", onError);
     };
@@ -94,6 +102,7 @@ export default function RootLayout() {
             wsReady,
             wsTable,
             setWsTable,
+            hand,
             card,
             socket,
             isConnected,
