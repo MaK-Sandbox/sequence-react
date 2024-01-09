@@ -2,7 +2,7 @@ import style from "./Hand.module.css";
 import { useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 
-export default function Hand() {
+export default function Hand({ setSelected }) {
   const { hand } = useOutletContext();
 
   useEffect(() => {
@@ -13,7 +13,13 @@ export default function Hand() {
     <div className={style["Hand"]}>
       {hand.length > 0
         ? hand.map((hand, i) => (
-            <span key={i} className={style["Card"]}>
+            <span
+              key={i}
+              className={style["Card"]}
+              onClick={(event) => {
+                setSelected(event.target.innerText);
+              }}
+            >
               {hand}
             </span>
           ))

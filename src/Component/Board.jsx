@@ -1,6 +1,14 @@
+import { useEffect } from "react";
 import style from "./Board.module.css";
 
-export default function Board({ playedCard, board }) {
+export default function Board({ playedCard, board, selected }) {
+  useEffect(() => {
+
+    
+
+    console.log("selected card: ", selected);
+  }, [selected]);
+
   function isHighlighted(playedCard, cell) {
     /**
      * Black jacks mean that the current player can place a token on any free spot on the board.
@@ -43,7 +51,9 @@ export default function Board({ playedCard, board }) {
                       data-cell={cellNumber}
                       key={cellNumber}
                     >
-                      <div className="face">{cell.face}</div>
+                      <div className="face" data-face={cell.face}>
+                        {cell.face}
+                      </div>
                       {cell.face === "X" ? null : (
                         <div className="token">{cell.token}</div>
                       )}

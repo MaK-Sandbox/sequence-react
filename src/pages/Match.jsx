@@ -5,10 +5,11 @@ import Piles from "../Component/Piles";
 import Hand from "../Component/Hand";
 import Scores from "../Component/Scores";
 import { useOutletContext } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { dealCards } from "../communications";
 
 export default function Match() {
+  const [selected, setSelected] = useState("");
   const { wsTable: match } = useOutletContext();
 
   useEffect(() => {
@@ -21,9 +22,9 @@ export default function Match() {
     <div className={style["game-view"]}>
       <Players teams={match.teams} admin={match.admin} />
       <Scores teams={match.teams} />
-      <Board board={match.board} />
+      <Board board={match.board} selected={selected} />
       <Piles />
-      <Hand />
+      <Hand setSelected={setSelected} />
     </div>
   );
 }
