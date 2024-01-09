@@ -26,13 +26,17 @@
   background-color: var(--card-color);
 }
 
+.Cell > * {
+  background-color: transparent;
+}
+
 .Cell:hover > *,
 .Cell:hover {
   background-color: bisque;
 }
 
-.Cell.highlighted {
-  border: 5px solid green;
+.highlighted {
+  background-color: var(--primary-color);
 }
 
 .🔵 {
