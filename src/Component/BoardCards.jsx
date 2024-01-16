@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import style from "./BoardCards.module.css";
 
-export default function BoardCards({ children, cell, cellNumber, rowNumber, selected }) {
+export default function BoardCards({ cell, cellNumber, rowNumber, selected }) {
   const cardRef = useRef("");
 
   function isHighlighted(selectedCard, cell) {
