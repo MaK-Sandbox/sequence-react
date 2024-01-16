@@ -4,41 +4,6 @@
   grid-row-end: span 2;
 }
 
-.Cell {
-  border: var(--card-border);
-  border-radius: var(--card-border-radius);
-
-  height: var(--card-height);
-  width: var(--card-width);
-  aspect-ratio: var(--card-aspect-ratio);
-
-  margin: 0.1em;
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.25em 0;
-}
-
-.Cell > *,
-.Cell {
-  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji";
-  background-color: var(--card-color);
-}
-
-.Cell > * {
-  background-color: transparent;
-}
-
-.Cell:hover > *,
-.Cell:hover {
-  background-color: bisque;
-}
-
-.highlighted {
-  background-color: var(--primary-color);
-}
-
 .🔵 {
   background-color: cornflowerblue;
 }
