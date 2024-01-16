@@ -46,6 +46,11 @@ export default function Board({ board, selected }) {
                       data-cell={cellNumber}
                       key={cellNumber}
                       ref={cardRef}
+                      onClick={(event) => {
+                        selected === cell.face
+                          ? console.log("Element: ", event.target)
+                          : null;
+                      }}
                     >
                       <div className="face" data-face={cell.face}>
                         {cell.face}
