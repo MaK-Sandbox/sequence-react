@@ -6,7 +6,7 @@ export default function Hand({ setSelected }) {
   const { hand } = useOutletContext();
 
   useEffect(() => {
-    hand.length > 0 ? console.log("dealt hand: ", hand) : null;
+    hand.length > 0 ? console.log("hand received from backend: ", hand) : null;
   }, [hand]);
 
   return (

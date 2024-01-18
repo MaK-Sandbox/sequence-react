@@ -36,6 +36,11 @@ export function dealCards() {
   sendToServer("dealCards");
 }
 
+export function discardCard(card) {
+  console.log("Send request to discard a card to the backend...", card);
+  sendToServer("playCard", card);
+}
+
 export function drawCard() {
   console.log("Draw card from the backend...");
   sendToServer("drawCard");

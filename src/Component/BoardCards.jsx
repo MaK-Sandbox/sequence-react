@@ -1,8 +1,11 @@
-import { useRef } from "react";
+import { useState } from "react";
+import { useOutletContext } from "react-router-dom";
+import { discardCard } from "../communications";
 import style from "./BoardCards.module.css";
 
 export default function BoardCards({ cell, cellNumber, rowNumber, selected }) {
-  const cardRef = useRef("");
+  const { hand } = useOutletContext();
+  const [token, setToken] = useState(cell.token);
 
   function isHighlighted(selectedCard, cell) {
     /**
@@ -27,6 +30,20 @@ export default function BoardCards({ cell, cellNumber, rowNumber, selected }) {
     return selectedCard === cell.face && !cell.token;
   }
 
+  function playTurn(selectedCard, cellFace) {
+    // check for dead cards on players hand
+
+    // place token on game board
+    if (selectedCard === cellFace) setToken("Y");
+
+    // put played card in discard pile
+    discardCard(selectedCard);
+
+    // draw a new card
+
+    // end turn
+  }
+
   return (
     <td
       className={`${style["Cell"]} ${
@@ -35,15 +52,12 @@ export default function BoardCards({ cell, cellNumber, rowNumber, selected }) {
       data-row={rowNumber}
       data-cell={cellNumber}
       key={cellNumber}
-      ref={cardRef}
-      onClick={(event) => {
-        selected === cell.face ? console.log("Element: ", event.target) : null;
-      }}
+      onClick={() => playTurn(selected, cell.face)}
     >
       <div className="face" data-face={cell.face}>
         {cell.face}
       </div>
-      {cell.face === "X" ? null : <div className="token">{cell.token}</div>}
+      {cell.face === "X" ? null : <div className="token">{token}</div>}
     </td>
   );
 }
