@@ -146,13 +146,13 @@ window.players = [
   },
 ];
 
-for (const player of window.players) {
-  player.cards = dealCards(5);
-}
+// for (const player of window.players) {
+//   player.cards = dealCards(5);
+// }
 
-function dealCards(cardsPerPlayer) {
-  return window.cards.splice(0, cardsPerPlayer);
-}
+// function dealCards(cardsPerPlayer) {
+//   return window.cards.splice(0, cardsPerPlayer);
+// }
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
