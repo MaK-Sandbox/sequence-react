@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { useOutletContext } from "react-router-dom";
-import { discardCard } from "../communications";
+import { playSelectedCard } from "../communications";
 import style from "./BoardCards.module.css";
 
 export default function BoardCards({ cell, cellNumber, rowNumber, selected }) {
-  const { hand } = useOutletContext();
   const [token, setToken] = useState(cell.token);
 
   function isHighlighted(selectedCard, cell) {
@@ -37,7 +35,7 @@ export default function BoardCards({ cell, cellNumber, rowNumber, selected }) {
     if (selectedCard === cellFace) setToken("Y");
 
     // put played card in discard pile
-    discardCard(selectedCard);
+    playSelectedCard(selectedCard);
 
     // draw a new card
 

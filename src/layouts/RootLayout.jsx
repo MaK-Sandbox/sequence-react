@@ -11,6 +11,7 @@ export default function RootLayout() {
   const [wsTable, setWsTable] = useState({});
   const [hand, setHand] = useState([]);
   const [card, setCard] = useState("");
+  const [discardPile, setDiscardPile] = useState([]);
 
   useEffect(() => {
     function onConnect() {
@@ -66,6 +67,11 @@ export default function RootLayout() {
       setCard(card);
     }
 
+    function onUpdateDiscardPile(pile) {
+      console.log("discard pile:", pile);
+      setDiscardPile(pile);
+    }
+
     function onError(err) {
       console.log(err);
     }
@@ -81,6 +87,7 @@ export default function RootLayout() {
     socket.on("cardsDealt", onDealHand);
     socket.on("updateHand", onUpdateHand);
     socket.on("drawCard", onDrawCard);
+    socket.on("updateDiscardPile", onUpdateDiscardPile);
     socket.on("error", onError);
 
     return () => {
@@ -95,6 +102,7 @@ export default function RootLayout() {
       socket.off("cardsDealt", onDealHand);
       socket.off("updateHand", onUpdateHand);
       socket.off("drawCard", onDrawCard);
+      socket.off("updateDiscardPile", onUpdateDiscardPile);
       socket.off("error", onError);
     };
   }, [socket]);
@@ -111,6 +119,7 @@ export default function RootLayout() {
             setWsTable,
             hand,
             card,
+            discardPile,
             socket,
             isConnected,
           }}
