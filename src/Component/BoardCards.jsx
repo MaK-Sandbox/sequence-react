@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { playSelectedCard } from "../communications";
+import { playSelectedCard, removeCardFromHand } from "../communications";
 import style from "./BoardCards.module.css";
 
 export default function BoardCards({ cell, cellNumber, rowNumber, selected }) {
@@ -36,6 +36,9 @@ export default function BoardCards({ cell, cellNumber, rowNumber, selected }) {
 
     // put played card in discard pile
     playSelectedCard(selectedCard);
+
+    // remove selected card from players hand
+    removeCardFromHand(selectedCard);
 
     // draw a new card
 

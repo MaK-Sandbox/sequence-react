@@ -41,6 +41,14 @@ export function playSelectedCard(card) {
   sendToServer("playCard", card);
 }
 
+export function removeCardFromHand(card) {
+  console.log(
+    "Send request to backend to remove card form players hand...",
+    card
+  );
+  sendToServer("removeCardFromHand", card);
+}
+
 export function drawCard() {
   console.log("Draw card from the backend...");
   sendToServer("drawCard");
