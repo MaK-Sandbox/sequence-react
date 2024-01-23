@@ -17,6 +17,7 @@
 
 .Card > *,
 .Card {
+  font-family: var(--font-family-cards);
   background-color: var(--card-color);
 }
 
