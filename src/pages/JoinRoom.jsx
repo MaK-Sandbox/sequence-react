@@ -19,7 +19,7 @@ export default function JoinTable() {
 
   useEffect(() => {
     if (wsTable.started) {
-      navigate("/matches/match");
+      navigate(`/matches/match/${wsTable.id}`);
     }
   }, [wsTable, navigate]);
 

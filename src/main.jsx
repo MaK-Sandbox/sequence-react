@@ -30,7 +30,7 @@ const router = createBrowserRouter([
         element: <CreateTable />,
       },
       {
-        path: "/matches/match",
+        path: "/matches/match/:tableId",
         element: <Match />,
       },
     ],
