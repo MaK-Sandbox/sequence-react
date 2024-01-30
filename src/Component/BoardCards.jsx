@@ -39,10 +39,6 @@ export default function BoardCards({ cell, cellNumber, rowNumber, selected }) {
 
     // remove selected card from players hand
     removeCardFromHand(selectedCard);
-
-    // draw a new card
-
-    // end turn
   }
 
   return (
