@@ -7,7 +7,8 @@
   margin: auto;
 }
 
-.cell {
+.cell,
+.cellEmpty {
   border: var(--card-border);
   border-radius: var(--card-border-radius);
 
@@ -27,6 +28,10 @@
 .cell {
   font-family: var(--font-family-cards);
   background-color: var(--card-color);
+}
+
+.cellEmpty {
+  background-color: transparent;
 }
 
 .cell.highlighted {

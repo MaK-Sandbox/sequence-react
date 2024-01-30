@@ -13,13 +13,15 @@ export default function DiscardPile() {
 
   return (
     <div className={style.discardPile}>
-      <div className={style.cell} title="Discard pile">
-        {discardPile.length > 0 ? (
+      {discardPile.length > 0 ? (
+        <div className={style.cell} title="Discard pile">
           <div className={style.face}>
             {discardPile[discardPile.length - 1]}
           </div>
-        ) : null}
-      </div>
+        </div>
+      ) : (
+        <div className={style.cellEmpty} title="Discard pile"></div>
+      )}
     </div>
   );
 }
