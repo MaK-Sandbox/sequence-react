@@ -6,18 +6,11 @@ import Hand from "../Component/Hand";
 import Scores from "../Component/Scores";
 import EndTurnButton from "../Component/EndTurnButton";
 import { useOutletContext } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { dealCards } from "../communications";
+import { useState } from "react";
 
 export default function Match() {
   const [selected, setSelected] = useState("");
   const { wsTable: match } = useOutletContext();
-
-  useEffect(() => {
-    if (match.started) {
-      dealCards();
-    }
-  }, [match]);
 
   return (
     <div className={style["game-view"]}>

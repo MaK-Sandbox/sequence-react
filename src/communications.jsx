@@ -31,11 +31,6 @@ export function startMatch() {
   sendToServer("startMatch");
 }
 
-export function dealCards() {
-  console.log("Send request to deal cards to the backend...");
-  sendToServer("dealCards");
-}
-
 export function playSelectedCard(card) {
   console.log("Send request to discard a card to the backend...", card);
   sendToServer("playCard", card);
