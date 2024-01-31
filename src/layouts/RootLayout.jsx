@@ -51,11 +51,6 @@ export default function RootLayout() {
       setWsTable(table);
     }
 
-    function onDealHand(hand) {
-      console.log(hand);
-      setHand(hand);
-    }
-
     function onUpdateHand(hand) {
       console.log(hand);
       setHand(hand);
@@ -78,7 +73,6 @@ export default function RootLayout() {
     socket.on("createMatch", onCreateMatch);
     socket.on("startMatch", onStartMatch);
     socket.on("table", onTable);
-    socket.on("cardsDealt", onDealHand);
     socket.on("updateHand", onUpdateHand);
     socket.on("updateDiscardPile", onUpdateDiscardPile);
     socket.on("error", onError);
@@ -92,7 +86,6 @@ export default function RootLayout() {
       socket.off("createMatch", onCreateMatch);
       socket.off("startMatch", onStartMatch);
       socket.off("table", onTable);
-      socket.off("cardsDealt", onDealHand);
       socket.off("updateHand", onUpdateHand);
       socket.off("updateDiscardPile", onUpdateDiscardPile);
       socket.off("error", onError);
