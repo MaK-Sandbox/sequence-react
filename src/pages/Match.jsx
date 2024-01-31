@@ -4,6 +4,7 @@ import Board from "../Component/Board";
 import Piles from "../Component/Piles";
 import Hand from "../Component/Hand";
 import Scores from "../Component/Scores";
+import EndTurnButton from "../Component/EndTurnButton";
 import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { dealCards } from "../communications";
@@ -25,6 +26,7 @@ export default function Match() {
       <Board board={match.board} selected={selected} />
       <Piles />
       <Hand setSelected={setSelected} />
+      <EndTurnButton />
     </div>
   );
 }

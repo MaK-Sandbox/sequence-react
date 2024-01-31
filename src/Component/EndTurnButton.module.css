@@ -1,0 +1,14 @@
+.EndTurnButton {
+  grid-row-start: 3;
+  grid-column-start: 3;
+
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.EndTurnButton > button {
+  padding: 1em;
+  color: green;
+  background-color: white;
+}

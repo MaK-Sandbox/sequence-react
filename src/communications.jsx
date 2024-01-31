@@ -53,3 +53,8 @@ export function drawCard() {
   console.log("Draw card from the backend...");
   sendToServer("drawCard");
 }
+
+export function endTurn() {
+  console.log("Ask backend to end playsers turn...");
+  sendToServer("endTurn");
+}
