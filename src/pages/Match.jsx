@@ -10,7 +10,7 @@ import { useState } from "react";
 
 export default function Match() {
   const [selected, setSelected] = useState("");
-  const { wsTable: match } = useOutletContext();
+  const { socket, wsTable: match } = useOutletContext();
 
   return (
     <div className={style["game-view"]}>
@@ -19,7 +19,7 @@ export default function Match() {
       <Board board={match.board} selected={selected} />
       <Piles />
       <Hand setSelected={setSelected} />
-      <EndTurnButton />
+      {match.turn === socket.id ? <EndTurnButton /> : null}
     </div>
   );
 }
