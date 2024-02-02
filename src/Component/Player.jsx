@@ -1,13 +1,20 @@
-import "./Player.css";
+import { useOutletContext } from "react-router-dom";
+import style from "./Player.module.css";
 
-export default function Player({ name, token, isAdmin }) {
+export default function Player({ id, name, token, isAdmin }) {
+  const { wsTable: match } = useOutletContext();
+  const hasTurnClass = id === match.turn ? style.Active : "";
+
   return (
-    <div className="Player">
-      <span className="Player_beginner_status" title="I started this round!">
+    <div className={`${style.Player} ${hasTurnClass}`}>
+      <span
+        className={style["Player_beginner_status"]}
+        title="I started this round!"
+      >
         {isAdmin ? "🔰" : null}
       </span>
-      <span className="Player_name">{name}</span>
-      <span className="Player_token">{token}</span>
+      <span className={style["Player_name"]}>{name}</span>
+      <span className={style["Player_token"]}>{token}</span>
     </div>
   );
 }

@@ -12,6 +12,7 @@ export default function Players({ teams, admin }) {
                   return (
                     <Player
                       key={admin + i + j}
+                      id={player.id}
                       name={player.username}
                       token={team.token}
                       isAdmin={admin === player.id}
