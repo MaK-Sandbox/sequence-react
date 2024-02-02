@@ -1,10 +1,7 @@
-import { useState } from "react";
-import { playSelectedCard, removeCardFromHand } from "../communications";
+import { playSelectedCard } from "../communications";
 import style from "./BoardCards.module.css";
 
 export default function BoardCards({ cell, cellNumber, rowNumber, selected }) {
-  const [token, setToken] = useState(cell.token);
-
   function isHighlighted(selectedCard, cell) {
     /**
      * Black jacks mean that the current player can place a token on any free spot on the board.
@@ -28,19 +25,6 @@ export default function BoardCards({ cell, cellNumber, rowNumber, selected }) {
     return selectedCard === cell.face && !cell.token;
   }
 
-  function playTurn(selectedCard, cellFace) {
-    // check for dead cards on players hand
-
-    // place token on game board
-    if (selectedCard === cellFace) setToken("Y");
-
-    // put played card in discard pile
-    playSelectedCard(selectedCard);
-
-    // remove selected card from players hand
-    removeCardFromHand(selectedCard);
-  }
-
   return (
     <td
       className={`${style["Cell"]} ${
@@ -49,12 +33,12 @@ export default function BoardCards({ cell, cellNumber, rowNumber, selected }) {
       data-row={rowNumber}
       data-cell={cellNumber}
       key={cellNumber}
-      onClick={() => playTurn(selected, cell.face)}
+      onClick={() => playSelectedCard(selected, rowNumber, cellNumber)}
     >
       <div className="face" data-face={cell.face}>
         {cell.face}
       </div>
-      {cell.face === "X" ? null : <div className="token">{token}</div>}
+      {cell.face === "X" ? null : <div className="token">{cell.token}</div>}
     </td>
   );
 }

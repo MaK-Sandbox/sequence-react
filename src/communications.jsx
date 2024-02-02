@@ -31,17 +31,15 @@ export function startMatch() {
   sendToServer("startMatch");
 }
 
-export function playSelectedCard(card) {
-  console.log("Send request to discard a card to the backend...", card);
-  sendToServer("playCard", card);
-}
-
-export function removeCardFromHand(card) {
-  console.log(
-    "Send request to backend to remove card form players hand...",
-    card
-  );
-  sendToServer("removeCardFromHand", card);
+export function playSelectedCard(card, row, cell) {
+  console.log("Selected card sent to the backend...", card);
+  console.log("Row number sent to the backend...", row);
+  console.log("Cell number sent to the backend...", cell);
+  sendToServer("playCard", {
+    selectedCard: card,
+    rowNumber: row,
+    cellNumber: cell,
+  });
 }
 
 export function drawCard() {
