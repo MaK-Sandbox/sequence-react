@@ -33,3 +33,8 @@
   border-color: green;
   box-shadow: 0.15em 0.15em 0.3em green;
 }
+
+.DeadCard > *,
+.DeadCard {
+  background-color: darkgray;
+}
