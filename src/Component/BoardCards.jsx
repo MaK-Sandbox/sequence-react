@@ -27,7 +27,7 @@ export default function BoardCards({ cell, cellNumber, rowNumber, selected }) {
 
   return (
     <td
-      className={`${style["Cell"]} ${
+      className={`${style.Cell} ${style[cell.token]}${
         isHighlighted(selected, cell) ? style["highlighted"] : ""
       }`}
       data-row={rowNumber}

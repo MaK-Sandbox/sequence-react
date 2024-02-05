@@ -32,3 +32,15 @@
 .highlighted {
   background-color: var(--primary-color);
 }
+
+.🔵 {
+  background-color: cornflowerblue;
+}
+
+.🔴 {
+  background-color: coral;
+}
+
+.🟢 {
+  background-color: chartreuse;
+}

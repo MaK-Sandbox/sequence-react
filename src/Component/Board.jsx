@@ -9,7 +9,7 @@ export default function Board({ board, selected }) {
           {Array.isArray(board)
             ? board.map((row, rowNumber) => {
                 return (
-                  <tr className={style["Row"]} key={rowNumber}>
+                  <tr className={style.Row} key={rowNumber}>
                     {row.map((cell, cellNumber) => {
                       return (
                         <BoardCards
