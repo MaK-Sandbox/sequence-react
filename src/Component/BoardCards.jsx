@@ -25,11 +25,16 @@ export default function BoardCards({ cell, cellNumber, rowNumber, selected }) {
     return selectedCard === cell.face && !cell.token;
   }
 
+  function isSpaceOccupied(cell) {
+    if (cell.token === null) return false;
+    return true;
+  }
+
   return (
     <td
-      className={`${style.Cell} ${style[cell.token]}${
-        isHighlighted(selected, cell) ? style["highlighted"] : ""
-      }`}
+      className={`${style.Cell} ${
+        isSpaceOccupied(cell) ? style[cell.token] : ""
+      }${isHighlighted(selected, cell) ? style["highlighted"] : ""}`}
       data-row={rowNumber}
       data-cell={cellNumber}
       key={cellNumber}
