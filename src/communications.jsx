@@ -51,3 +51,8 @@ export function endTurn() {
   console.log("Ask backend to end playsers turn...");
   sendToServer("endTurn");
 }
+
+export function deadCard(card) {
+  console.log("Send dead card to backend...");
+  sendToServer("deadCard", card);
+}

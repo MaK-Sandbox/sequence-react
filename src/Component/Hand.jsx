@@ -1,6 +1,7 @@
-import style from "./Hand.module.css";
 import { useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
+import { deadCard } from "../communications";
+import style from "./Hand.module.css";
 
 export default function Hand({ setSelected }) {
   const { hand, deadCards } = useOutletContext();
@@ -26,7 +27,12 @@ export default function Hand({ setSelected }) {
               key={i}
               className={`${style.Card} ${classNameDeadCard(card)}`}
               onClick={(event) => {
-                setSelected(event.target.innerText);
+                if (deadCards.includes(card)) {
+                  console.log(`dead card: ${card}`);
+                  deadCard(card);
+                } else {
+                  setSelected(event.target.innerText);
+                }
               }}
             >
               <div>{card}</div>
