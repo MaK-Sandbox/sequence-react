@@ -52,6 +52,11 @@ export function endTurn() {
   sendToServer("endTurn");
 }
 
+export function checkForDeadCards() {
+  console.log("Send request to backend to check for dead cards...");
+  sendToServer("checkHandForDeadCards");
+}
+
 export function replaceDeadCard(card) {
   console.log(
     "Send request to backend to replace one dead card on players hand..."

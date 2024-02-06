@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
-import { replaceDeadCard } from "../communications";
+import { checkForDeadCards, replaceDeadCard } from "../communications";
 import style from "./Hand.module.css";
 
 export default function Hand({ setSelected }) {
-  const { hand, deadCards } = useOutletContext();
+  const { hand, deadCards, wsTable: match } = useOutletContext();
 
   function classNameDeadCard(card) {
     if (deadCards.includes(card)) return style.DeadCard;
@@ -14,6 +14,10 @@ export default function Hand({ setSelected }) {
   useEffect(() => {
     hand.length > 0 ? console.log("hand received from backend: ", hand) : null;
   }, [hand]);
+
+  useEffect(() => {
+    match.turn && hand.length > 0 ? checkForDeadCards() : null;
+  }, [match, hand]);
 
   useEffect(() => {
     deadCards.length > 0 ? console.log("deadCards: ", deadCards) : null;
