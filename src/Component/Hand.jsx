@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
-import { deadCard } from "../communications";
+import { replaceDeadCard } from "../communications";
 import style from "./Hand.module.css";
 
 export default function Hand({ setSelected }) {
@@ -29,7 +29,7 @@ export default function Hand({ setSelected }) {
               onClick={(event) => {
                 if (deadCards.includes(card)) {
                   console.log(`dead card: ${card}`);
-                  deadCard(card);
+                  replaceDeadCard(card);
                 } else {
                   setSelected(event.target.innerText);
                 }
