@@ -35,6 +35,12 @@ export default function Lobby({ teams }) {
                     className={
                       player.id === socket.id ? style["highlight"] : null
                     }
+                    onMouseEnter={() =>
+                      player.id === socket.id ? console.log("EDIT?") : null
+                    }
+                    onMouseLeave={() =>
+                      player.id === socket.id ? console.log("SAVE!") : null
+                    }
                   >
                     {player.id === socket.id
                       ? `${player.username} (You)`
