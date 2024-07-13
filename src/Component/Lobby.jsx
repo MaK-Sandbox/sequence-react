@@ -1,8 +1,14 @@
 import style from "./Lobby.module.css";
+import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 
 export default function Lobby({ teams }) {
+  const [isInEditMode, setIsInEditmode] = useState(false);
   const { socket, wsTable } = useOutletContext();
+
+  useEffect(() => {
+    console.log("isInEditMode: ", isInEditMode);
+  }, [isInEditMode]);
 
   return (
     <div className={style["Lobby"]}>
@@ -36,15 +42,17 @@ export default function Lobby({ teams }) {
                       player.id === socket.id ? style["highlight"] : null
                     }
                     onMouseEnter={() =>
-                      player.id === socket.id ? console.log("EDIT?") : null
+                      player.id === socket.id
+                        ? toggleEditMode(player.id, socket.id)
+                        : null
                     }
                     onMouseLeave={() =>
-                      player.id === socket.id ? console.log("SAVE!") : null
+                      player.id === socket.id
+                        ? toggleEditMode(player.id, socket.id)
+                        : null
                     }
                   >
-                    {player.id === socket.id
-                      ? `${player.username} (You)`
-                      : player.username}
+                    {displayOfUsername(player, socket)}
                   </div>,
                   <div
                     key={index * 10 + 2}
@@ -62,4 +70,25 @@ export default function Lobby({ teams }) {
       </div>
     </div>
   );
+
+  function displayOfUsername(player, socket) {
+    if (isInEditMode && player.id === socket.id) {
+      return `${player.username} (You)✏️`;
+    }
+
+    if (player.id === socket.id) {
+      return `${player.username} (You)`;
+    }
+
+    return `${player.username}`;
+  }
+
+  function toggleEditMode(playerId, socketId) {
+    // firstly, test if the username belongs to the current player
+    if (playerId === socketId) {
+      //assuming we have the current player, toggle value of isInEditMode
+      const currentValue = isInEditMode;
+      setIsInEditmode(!currentValue);
+    }
+  }
 }
